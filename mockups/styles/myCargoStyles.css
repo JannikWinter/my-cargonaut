@@ -1,0 +1,29 @@
+.cargonautColor {
+    background-color: #107256;
+}
+
+.border-cargo {
+    border-bottom-width: medium;
+    border-bottom-style: solid;
+    border-bottom-color: #107256;
+}
+
+.cargoNautLogo {
+    max-width: 70%;
+    height: auto;
+}
+
+.profilePic {
+    width: 60px;
+}
+
+@media (max-width: 992px) {
+    .cargoNautLogo {
+        max-width: 90%;
+        height: auto;
+    }
+
+    .profilePic {
+        width: 30px;
+    }
+}

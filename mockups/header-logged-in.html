@@ -1,14 +1,42 @@
 <html>
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <link href="styles/myCargoStyles.css" rel="stylesheet">
     </head>
     <body>
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar navbar-expand navbar-light bg-light sticky-top p-2 border-cargo">
             <a class="navbar-brand" href="#">
-                <img src="img/logo.svg" height="100" class="d-inline-block align-top" alt="">
-                MyCargonaut
+                <img src="img/logo.png" height="379" width="901" class="cargoNautLogo" alt="logo of MyCargonaut">
             </a>
+
+            <div class="container">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Angebot erstellen</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Gesuch erstellen</a>
+                    </li>
+                </ul>
+                <div class="row mr-auto">
+                    <div class="col mx-auto">
+                        <div class="col d-flex justify-content-center">
+                            <img src="img/profile2.png" class="img-circle profilePic" alt="profile picture">
+                        </div>
+                        <div class="col d-flex justify-content-center">
+                            <div class="dropdown mt-1">
+                                <button type="button" class="btn btn-sm dropdown-toggle text-light cargonautColor" id="ddMenuBtn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Profilaktionen
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="ddMenuBtn">
+                                    <a class="dropdown-item" href="#">Profil bearbeiten</a>
+                                    <a class="dropdown-item" href="#">Abmelden</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </nav>
         <content>
 
@@ -16,5 +44,7 @@
         <footer>
 
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
     </body>
 </html>
