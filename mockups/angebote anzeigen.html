@@ -1,0 +1,112 @@
+<html>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link href="styles/myCargoStyles.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand navbar-light bg-light sticky-top p-2 border-cargo">
+  <a class="navbar-brand" href="#">
+    <img src="img/logo.png" height="379" width="901" class="cargoNautLogo" alt="logo of MyCargonaut">
+  </a>
+
+  <div class="container">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Angebot erstellen</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Gesuch erstellen</a>
+      </li>
+    </ul>
+    <div class="card mr-auto" style="width: 10rem;">
+      <div class="card-body">
+        <div class="container d-flex justify-content-center justify-content-middle">
+          <img src="img/profile2.png" class="car-img-top pt-1 profilePic" alt="profile picture">
+        </div>
+        <div class="dropstart mt-1 d-flex justify-content-center">
+          <button type="button" class="btn btn-sm dropdown-toggle text-light cargonautColor" style="white-space: normal"
+                  id="ddMenuBtn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Optionen
+          </button>
+          <div class="dropdown-menu" aria-labelledby="ddMenuBtn">
+            <a class="dropdown-item" href="#">Profil bearbeiten</a>
+            <a class="dropdown-item" href="#">Abmelden</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<form>
+  <div class="container-fluid cargonautColor">
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="startCity" class="form-label">Ausgangsstadt</label>
+          <input type="text" class="form-control" id="startCity" placeholder="Von">
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="endCity" class="form-label">Zielstadt</label>
+          <input type="text" class="form-control" id="endCity" placeholder="Nach">
+        </div>
+      </div>
+      <div class="col"></div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="startDate" class="form-label">Zeitraum von</label>
+          <input type="date" class="form-control" id="startDate" placeholder="">
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="endDate" class="form-label">bis</label>
+          <input type="date" class="form-control" id="endDate" placeholder="">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <label class="col-1 col-form-label">Ladung</label>
+      <div class="col">
+        <div class="mb-3">
+          <label for="length" class="form-label">Laenge (cm)</label>
+          <input type="number" class="form-control" id="length" placeholder="0">
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="width" class="form-label">Breite (cm)</label>
+          <input type="number" class="form-control" id="width" placeholder="0">
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="height" class="form-label">Hoehe (cm)</label>
+          <input type="number" class="form-control" id="height" placeholder="0">
+        </div>
+      </div>
+      <div class="col"></div>
+      <div class="col">
+        <label for="searchType" class="form-label">Suche...</label>
+        <select class="form-select" id="searchType" aria-label="choose between offer and request">
+          <option selected value="0">Angebote</option>
+          <option value="1">Gesuche</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  </div>
+</form>
+<footer>
+
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+        integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+        crossorigin="anonymous"></script>
+</body>
+</html>
