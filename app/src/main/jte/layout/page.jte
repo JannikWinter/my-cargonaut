@@ -19,6 +19,7 @@
             <img src="/img/logo.png" height="379" width="901" class="cargoNautLogo" alt="logo of MyCargonaut">
           </a>
 
+          @if(!(page instanceof my_cargonaut.landing.NotFoundPage))
           <div class="container">
             <ul class="navbar-nav">
               <li class="nav-item">
@@ -57,11 +58,12 @@
             </div>
             @endif
           </div>
+          @endif
         </nav>
     </header>
     <main>
         <div id="content">
-            ${content}s
+            ${content}
         </div>
     </main>
     <footer>

@@ -34,6 +34,8 @@ public class App {
 
         app.routes(() -> {
             get(LandingPage.PATH, LandingController.serveLandingPage);
+
+            app.error(404, LandingController.serveNotFoundPage);
         });
     }
 
