@@ -4,76 +4,113 @@
 @param Page page
 @param Content content
 
-<html lang="de">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>My Cargonaut</title>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link href="/styles/myCargoStyles.css" rel="stylesheet">
+    <title>MyCargonaut</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style/bootstrap.css"> <!-- This is the MINTY stylesheet created at bootstrap.build-->
+    <link rel="icon" href="/img/semi_androidMyCargonaut.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand navbar-light bg-light sticky-top p-2 border-cargo">
-          <a class="navbar-brand" href="#">
-            <img src="/img/logo.png" height="379" width="901" class="cargoNautLogo" alt="logo of MyCargonaut">
-          </a>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <style type="text/css">
+                    body { background: #caf3e8 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+                </style>
+                <a class="navbar-brand" href="#">
+                    <img src="/img/semi_androidMyCargonaut.svg" style="height: 50px" class="d-inline-block align-top" alt="">
+                    </a>
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item px-2">
+                            <button type="button" class="btn btn-primary">Angebot erstellen</button>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-primary">Gesuche erstellen</button>
+                        </li>
+                    </ul>
+                    @if(!(page.isUserLoggedIn()))
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item px-2">
+                            <button type="button" class="btn btn-danger">Registrieren</button>
+                        </li>
+                        <!-- Excempt from https://www.codeply.com/go/XefCTinzkY/bootstrap-4-navbar-with-login-form -->
+                        <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
+                            <li class="dropdown order-1">
+                                <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Anmelden <span class="caret"></span></button>
+                                <ul class="dropdown-menu dropdown-menu-right mt-2">
+                                    <li class="px-3 py-2">
+                                        <form class="form" role="form">
+                                            <div class="form-group">
+                                                <input id="emailInput" placeholder="Email" class="form-control form-control-sm" type="text" required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <input id="passwordInput" placeholder="Passwort" class="form-control form-control-sm" type="text" required="">
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                                            </div>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </ul>
+                    @else
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item px-2">
+                            <a href="Profile_Edit.html" class="btn btn-info text-white" role="button">
+                                <i class="fa fa-user"></i> Mein Profil</a>
+                        </li>
+                    </ul>
+                    @endif
+                </div>
+            </nav>
 
-          @if(!(page instanceof my_cargonaut.landing.NotFoundPage))
-          <div class="container">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Angebot erstellen</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Gesuch erstellen</a>
-              </li>
-            </ul>
-            @if(page.isUserLoggedIn())
-            <div class="card mr-auto" style="width: 10rem;">
-              <div class="card-body">
-                <div class="container d-flex justify-content-center justify-content-middle">
-                  <img src="/img/profile2.png" class="car-img-top pt-1 profilePic" alt="profile picture">
-                </div>
-                <div class="dropstart mt-1 d-flex justify-content-center">
-                  <button type="button" class="btn btn-sm dropdown-toggle text-light cargonautColor" style="white-space: normal"
-                          id="ddMenuBtn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Optionen
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="ddMenuBtn">
-                    <a class="dropdown-item" href="#">Profil bearbeiten</a>
-                    <a class="dropdown-item" href="#">Abmelden</a>
-                  </div>
-                </div>
-              </div>
+            <div class="container-fluid text-white" id="content">
+                ${content}
             </div>
-            @else
-            <div class="row mr-auto">
-              <div class="col">
-                <a class="btn btn-sm text-light cargonautColor mt-1" href="#" style="width: 100%">Anmelden</a>
-              </div>
-              <div class="col">
-                <a class="btn btn-sm text-light cargonautColor mt-1" href="#" style="width: 100%">Registrieren</a>
-              </div>
-            </div>
-            @endif
-          </div>
-          @endif
-        </nav>
-    </header>
-    <main>
-        <div id="content">
-            ${content}
+
+            <!-- Footer -->
+            <footer class="bg-light text-center text-lg-start fixed-bottom">
+                <!-- Grid container -->
+                <div class="container p-4">
+                    <!--Grid row-->
+                    <div class="row">
+                        <!--Grid column-->
+                        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                            <p>MyCargonaut GmBH<br />
+                                Musterstra&szlig;e 111<br />
+                                Geb&auml;ude 44<br />
+                                90210 Musterstadt</p>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                            <p><strong>Vertreten durch:</strong>
+                                Iason C. Argonaut</p>
+                            <p>Telefon: +49 (0) 123 44 55 66<br />
+                                E-Mail: contact@mycargonaut.de</p>
+
+                        </div>
+                    </div>
+                    <!--Grid row-->
+                </div>
+            </footer>
+            <!-- Footer -->
         </div>
-    </main>
-    <footer>
-
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
-            integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
-            integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
-            crossorigin="anonymous"></script>
+    </div>
+</div>
 </body>
 </html>
