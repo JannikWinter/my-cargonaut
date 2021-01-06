@@ -24,10 +24,16 @@ dependencies {
     implementation 'com.google.guava:guava:29.0-jre'
 
     // Javalin
-    compile 'io.javalin:javalin:3.12.0'
+    implementation 'io.javalin:javalin:3.12.0'
+
+    //jte
+    implementation group: 'gg.jte', name: 'jte', version: '1.5.0'
+
+    // Java Logger
+    implementation "org.slf4j:slf4j-simple:1.7.30"
 }
 
 application {
     // Define the main class for the application.
-    mainClass = 'my.cargonaut.App'
+    mainClass = 'my_cargonaut.App'
 }
