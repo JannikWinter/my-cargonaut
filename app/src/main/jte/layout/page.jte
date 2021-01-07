@@ -72,6 +72,9 @@
                             <a href="Profile_Edit.html" class="btn btn-info text-white" role="button">
                                 <i class="fa fa-user"></i> Mein Profil</a>
                         </li>
+                         <li class="nav-item px-2">
+                              <button type="button" class="btn btn-danger">Ausloggen</button>
+                         </li>
                     </ul>
                     @endif
                 </div>
