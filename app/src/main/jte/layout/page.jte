@@ -33,10 +33,7 @@
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item px-2">
-                            <button type="button" class="btn btn-primary">Angebot erstellen</button>
-                        </li>
-                        <li class="nav-item">
-                            <button type="button" class="btn btn-primary">Gesuche erstellen</button>
+                            <button type="button" class="btn btn-primary">Eintrag erstellen</button>
                         </li>
                     </ul>
                     @if(!(page.isUserLoggedIn()))
@@ -72,6 +69,9 @@
                             <a href="Profile_Edit.html" class="btn btn-info text-white" role="button">
                                 <i class="fa fa-user"></i> Mein Profil</a>
                         </li>
+                         <li class="nav-item px-2">
+                              <button type="button" class="btn btn-danger">Ausloggen</button>
+                         </li>
                     </ul>
                     @endif
                 </div>
