@@ -1,11 +1,13 @@
 package my_cargonaut.landing;
 
 import io.javalin.http.Handler;
+import my_cargonaut.login.LoginController;
 
 public class LandingController {
 
     public static Handler serveLandingPage = ctx -> {
         LandingPage page = new LandingPage(ctx);
+        page = (LandingPage)LoginController.checkLoginPostFromEverywhere(page, ctx);
         page.render();
     };
 

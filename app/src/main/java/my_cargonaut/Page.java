@@ -10,9 +10,12 @@ public abstract class Page {
     protected final Context ctx;
 
     private String currentUser;
+    private boolean hasAuthorizationFailed;
+    private String errorMsg;
 
     public Page(Context ctx) {
         this.ctx = ctx;
+        this.hasAuthorizationFailed = false;
     }
 
     public abstract String getTemplate();
@@ -24,8 +27,38 @@ public abstract class Page {
         return Optional.ofNullable(currentUser);
     }
 
+    public void setLoggedInUser(String username) {
+        ctx.sessionAttribute("username", username);
+        this.currentUser = ctx.sessionAttribute(username);
+    }
+
+    public String removeLoggedInUser() {
+        String curUser = this.currentUser;
+        currentUser = null;
+        ctx.sessionAttribute("currentUser", null);
+        return curUser;
+    }
+
     public boolean isUserLoggedIn() {
         return getCurrentUser().isPresent();
+    }
+
+    public Page markAuthentificationFailure() {
+        this.hasAuthorizationFailed = true;
+        return this;
+    }
+
+    public boolean hasAuthorizationFailed() {
+        return this.hasAuthorizationFailed;
+    }
+
+    public Optional<String> getErrorMsg() {
+        return Optional.ofNullable(errorMsg);
+    }
+
+    public Page setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
+        return this;
     }
 
     public void render() {

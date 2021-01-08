@@ -50,12 +50,12 @@
                                 <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Anmelden <span class="caret"></span></button>
                                 <ul class="dropdown-menu dropdown-menu-right mt-2">
                                     <li class="px-3 py-2">
-                                        <form class="form" role="form">
+                                        <form class="form" role="form" method="post" action="/">
                                             <div class="form-group">
-                                                <input id="emailInput" placeholder="Email" class="form-control form-control-sm" type="text" required="">
+                                                <input id="emailInput" name="email" placeholder="Email" class="form-control form-control-sm" type="text" required="">
                                             </div>
                                             <div class="form-group">
-                                                <input id="passwordInput" placeholder="Passwort" class="form-control form-control-sm" type="text" required="">
+                                                <input id="passwordInput" name="password" placeholder="Passwort" class="form-control form-control-sm" type="text" required="">
                                             </div>
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-primary btn-block">Login</button>

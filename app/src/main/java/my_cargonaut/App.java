@@ -13,8 +13,17 @@ import io.javalin.core.util.RouteOverviewPlugin;
 import io.javalin.plugin.rendering.template.JavalinJte;
 import my_cargonaut.landing.LandingController;
 import my_cargonaut.landing.LandingPage;
+import my_cargonaut.login.LoginController;
+import my_cargonaut.user.User;
+import my_cargonaut.user.UserRegister;
+import org.eclipse.jetty.server.SessionIdManager;
+import org.eclipse.jetty.server.session.SessionData;
+import org.eclipse.jetty.server.session.SessionDataMap;
+import org.eclipse.jetty.server.session.SessionDataStore;
+import org.eclipse.jetty.server.session.SessionHandler;
 
 import java.nio.file.Path;
+import java.util.HashMap;
 
 import static io.javalin.apibuilder.ApiBuilder.before;
 import static io.javalin.apibuilder.ApiBuilder.get;
@@ -23,17 +32,19 @@ import static io.javalin.apibuilder.ApiBuilder.post;
 public class App {
 
     public static final boolean devSystem = System.getProperty("environment") == null;
+    public static final UserRegister userMap = UserRegister.getInstance();
 
     public static void main(String[] args) {
 
-
-
-        // TODO: Add Firebase stuff as dependencies
+        User testUser = new User("test", "test");
+        userMap.addNewUser(testUser);
 
         Javalin app = Javalin.create(App::configure).start(7777);
 
         app.routes(() -> {
+            before(LoginController.clearSessionOnLogOut);
             get(LandingPage.PATH, LandingController.serveLandingPage);
+            post(LandingPage.PATH, LandingController.serveLandingPage);
 
             app.error(404, LandingController.serveNotFoundPage);
         });
@@ -43,6 +54,18 @@ public class App {
         JavalinJte.configure(createTemplateEngine());
         config.addStaticFiles("/public");
         config.registerPlugin(new RouteOverviewPlugin("/routes"));
+    }
+
+    public static void defineEvents(Javalin app) {
+        app.events(event -> {
+            event.serverStopping(() -> {
+                // TODO: Save the registered Users in the file/database?
+
+            });
+            event.serverStarting(() -> {
+                // TODO: Load the registered users from file
+            });
+        });
     }
 
     private static TemplateEngine createTemplateEngine() {
