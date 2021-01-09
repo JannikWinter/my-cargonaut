@@ -7,7 +7,9 @@ public class LandingController {
 
     public static Handler serveLandingPage = ctx -> {
         LandingPage page = new LandingPage(ctx);
-        page = (LandingPage)LoginController.checkLoginPostFromEverywhere(page, ctx);
+        if(ctx.method().equals("POST")) {
+            page = (LandingPage)LoginController.checkLoginPostFromEverywhere(page, ctx);
+        }
         page.render();
     };
 

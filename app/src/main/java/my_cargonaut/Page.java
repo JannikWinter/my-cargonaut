@@ -16,6 +16,7 @@ public abstract class Page {
     public Page(Context ctx) {
         this.ctx = ctx;
         this.hasAuthorizationFailed = false;
+        this.currentUser = ctx.sessionAttribute("username");
     }
 
     public abstract String getTemplate();
@@ -29,7 +30,7 @@ public abstract class Page {
 
     public void setLoggedInUser(String username) {
         ctx.sessionAttribute("username", username);
-        this.currentUser = ctx.sessionAttribute(username);
+        this.currentUser = ctx.sessionAttribute("username");
     }
 
     public String removeLoggedInUser() {

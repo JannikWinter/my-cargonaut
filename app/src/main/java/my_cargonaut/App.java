@@ -42,9 +42,13 @@ public class App {
         Javalin app = Javalin.create(App::configure).start(7777);
 
         app.routes(() -> {
-            before(LoginController.clearSessionOnLogOut);
+            // Landing page
+            before(LandingPage.PATH, LoginController.clearSessionOnLogOut);
             get(LandingPage.PATH, LandingController.serveLandingPage);
             post(LandingPage.PATH, LandingController.serveLandingPage);
+            // Logout handling
+            get("/logout", LoginController.handleLogout);
+
 
             app.error(404, LandingController.serveNotFoundPage);
         });
