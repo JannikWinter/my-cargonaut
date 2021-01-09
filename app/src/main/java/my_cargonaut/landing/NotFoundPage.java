@@ -7,6 +7,7 @@ public class NotFoundPage extends Page {
 
     public NotFoundPage(Context ctx) {
         super(ctx);
+        this.hideNavBarNavigation = true;
     }
 
     @Override

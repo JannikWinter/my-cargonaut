@@ -34,4 +34,8 @@ public class UserRegister {
         registeredUsers.put(user.getUsername(), user);
         return true;
     }
+
+    public Optional<User> deleteUser(String username) {
+        return Optional.ofNullable(registeredUsers.remove(username));
+    }
 }

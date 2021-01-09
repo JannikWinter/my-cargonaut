@@ -1,5 +1,6 @@
 @import my_cargonaut.Page
 @import gg.jte.Content
+@import my_cargonaut.utility.FormManUtils
 
 @param Page page
 @param Content content
@@ -18,7 +19,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <script src="scripts/scripts.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -28,9 +28,11 @@
                 <style type="text/css">
                     body { background: #caf3e8 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
                 </style>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="/img/semi_androidMyCargonaut.svg" style="height: 50px" class="d-inline-block align-top" alt="">
                     </a>
+
+                @if(!(page.hideNavBarNavigation()))
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item px-2">
@@ -40,7 +42,7 @@
                     @if(!(page.isUserLoggedIn()))
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item px-2">
-                            <button type="button" class="btn btn-danger">Registrieren</button>
+                            <a href="/register" role="button" class="btn btn-danger">Registrieren</a>
                         </li>
                         <!-- Excempt from https://www.codeply.com/go/XefCTinzkY/bootstrap-4-navbar-with-login-form -->
                         <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
@@ -48,12 +50,12 @@
                                 <button type="button" id="dropdownMenu1" data-toggle="dropdown" class="btn btn-outline-secondary dropdown-toggle">Anmelden <span class="caret"></span></button>
                                 <ul class="dropdown-menu dropdown-menu-right mt-2">
                                     <li class="px-3 py-2">
-                                        <form class="form" role="form" method="post" action="/">
+                                        <form class="form" name="${FormManUtils.loginForm}" role="form" method="post" action="/">
                                             <div class="form-group">
-                                                <input id="emailInput" name="email" placeholder="Email" class="form-control form-control-sm" type="text" required="">
+                                                <input id="emailInput" name="${FormManUtils.loginFormName}" placeholder="Email" class="form-control form-control-sm" type="text" required="">
                                             </div>
                                             <div class="form-group">
-                                                <input id="passwordInput" name="password" placeholder="Passwort" class="form-control form-control-sm" type="text" required="">
+                                                <input id="passwordInput" name="${FormManUtils.loginFormPassword}" placeholder="Passwort" class="form-control form-control-sm" type="text" required="">
                                             </div>
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-primary btn-block">Login</button>
@@ -76,7 +78,24 @@
                     </ul>
                     @endif
                 </div>
+                @endif
             </nav>
+
+            @if(page.wasAuthorizationAttempted())
+            @if(page.hasAuthorizationSucceeded())
+            <div class="container-fluid">
+                <div class="alert alert-success">
+                    <strong>Login erfolgreich:</strong> ${"" + page.getCurrentUser().orElse("Sollte nie passieren!")} ist angemeldet
+                </div>
+            </div>
+            @else
+            <div class="container-fluid">
+                <div class="alert alert-danger">
+                    <strong>Login fehlgeschlagen:</strong> ${"" + page.getLoginErrorMsg().orElse("Unbekannte Fehlermeldung")}
+                </div>
+            </div>
+            @endif
+            @endif
 
             <div class="container-fluid text-white" id="content">
                 ${content}
@@ -113,5 +132,7 @@
         </div>
     </div>
 </div>
+<!-- javascript-file -->
+<script src="scripts/script.js"></script>
 </body>
 </html>

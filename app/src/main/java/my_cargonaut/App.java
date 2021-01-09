@@ -14,6 +14,8 @@ import io.javalin.plugin.rendering.template.JavalinJte;
 import my_cargonaut.landing.LandingController;
 import my_cargonaut.landing.LandingPage;
 import my_cargonaut.login.LoginController;
+import my_cargonaut.registration.RegistrationController;
+import my_cargonaut.registration.RegistrationPage;
 import my_cargonaut.user.User;
 import my_cargonaut.user.UserRegister;
 import org.eclipse.jetty.server.SessionIdManager;
@@ -48,6 +50,9 @@ public class App {
             post(LandingPage.PATH, LandingController.serveLandingPage);
             // Logout handling
             get("/logout", LoginController.handleLogout);
+            //Registration handling
+            get(RegistrationPage.PATH, RegistrationController.serveRegistrationPage);
+            post(RegistrationPage.PATH, RegistrationController.handleRegistration);
 
 
             app.error(404, LandingController.serveNotFoundPage);

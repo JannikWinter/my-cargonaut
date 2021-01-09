@@ -5,6 +5,9 @@ import io.javalin.http.Context;
 import io.javalin.http.Handler;
 import my_cargonaut.Page;
 import my_cargonaut.landing.LandingPage;
+import my_cargonaut.utility.FormManUtils;
+
+import static my_cargonaut.utility.SessionManUtils.sessionAttributeLoggedInUsername;
 
 public class LoginController {
 
@@ -12,28 +15,29 @@ public class LoginController {
 
     public static Handler clearSessionOnLogOut = ctx -> {
 
-        System.out.println((String)ctx.sessionAttribute("username"));
+        System.out.println((String)ctx.sessionAttribute(sessionAttributeLoggedInUsername));
         //if(ctx.pathParam("status").)
     };
 
     public static Handler handleLogout = ctx -> {
-        ctx.sessionAttribute("username", null);
+        ctx.sessionAttribute(sessionAttributeLoggedInUsername, null);
+        //TODO: Maybe use ctx.path() here? So a user would be redirected to the page they were on
         ctx.redirect(LandingPage.PATH);
     };
 
     public static Page checkLoginPostFromEverywhere(Page page, Context ctx) {
-        String username = ctx.formParam("email");
-        String password = ctx.formParam("password");
+        String username = ctx.formParam(FormManUtils.loginFormName);
+        String password = ctx.formParam(FormManUtils.loginFormPassword);
 
         try {
             if (!LoginService.authenticate(username, password)) {
-                return page.markAuthentificationFailure();
+                return page.markAuthentificationFailure("Falsches Passwort");
             } else {
-                page.setLoggedInUser(username);
+                ctx.sessionAttribute(sessionAttributeLoggedInUsername, username);
+                return page.markAuthentificationSuccess();
             }
         } catch(IllegalArgumentException e) {
-            return page.markAuthentificationFailure().setErrorMsg(e.getMessage());
+            return page.markAuthentificationFailure(e.getMessage());
         }
-        return page;
     }
 }

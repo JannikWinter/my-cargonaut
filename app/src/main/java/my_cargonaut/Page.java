@@ -1,65 +1,92 @@
 package my_cargonaut;
 
 import io.javalin.http.Context;
+import my_cargonaut.registration.RegistrationController;
 
 import java.util.Collections;
 import java.util.Optional;
 
+import static my_cargonaut.utility.SessionManUtils.*;
+
 public abstract class Page {
 
     protected final Context ctx;
+    protected boolean hideNavBarNavigation;
 
     private String currentUser;
-    private boolean hasAuthorizationFailed;
-    private String errorMsg;
+    private boolean wasAuthorizationAttempted;
+    private boolean hasAuthorizationSucceeded;
+    private String loginErrorMsg;
+
+    //private String newlyRegisteredUser;
 
     public Page(Context ctx) {
         this.ctx = ctx;
-        this.hasAuthorizationFailed = false;
-        this.currentUser = ctx.sessionAttribute("username");
+        this.wasAuthorizationAttempted = false;
+        this.hasAuthorizationSucceeded = false;
+        this.currentUser = ctx.sessionAttribute(sessionAttributeLoggedInUsername);
+        this.hideNavBarNavigation = false;
+        /*
+        // TODO: Delete if registration works as intended
+        Optional<String> tmp = Optional.ofNullable(ctx.sessionAttribute(sessionAttributeRegisteredUserName));
+        if(tmp.isPresent()) {
+            this.newlyRegisteredUser = tmp.get();
+            RegistrationController.cleanSessionFromRegistrationClutter(ctx);
+        } else {
+            this.newlyRegisteredUser = null;
+        }
+         */
+
     }
 
     public abstract String getTemplate();
 
     public Optional<String> getCurrentUser() {
-        if(currentUser == null) {
-            currentUser = ctx.sessionAttribute("currentUser");
-        }
         return Optional.ofNullable(currentUser);
     }
 
-    public void setLoggedInUser(String username) {
-        ctx.sessionAttribute("username", username);
-        this.currentUser = ctx.sessionAttribute("username");
+    public void updateLoggedInUser() {
+        this.currentUser = ctx.sessionAttribute(sessionAttributeLoggedInUsername);
     }
 
-    public String removeLoggedInUser() {
-        String curUser = this.currentUser;
-        currentUser = null;
-        ctx.sessionAttribute("currentUser", null);
-        return curUser;
+    /*
+    public Optional<String> getNewlyRegisteredUser() {
+        return Optional.ofNullable(newlyRegisteredUser);
     }
+     */
 
     public boolean isUserLoggedIn() {
         return getCurrentUser().isPresent();
     }
 
-    public Page markAuthentificationFailure() {
-        this.hasAuthorizationFailed = true;
+    public Page markAuthentificationSuccess() {
+        this.wasAuthorizationAttempted = true;
+        this.hasAuthorizationSucceeded = true;
+        updateLoggedInUser();
         return this;
     }
 
-    public boolean hasAuthorizationFailed() {
-        return this.hasAuthorizationFailed;
-    }
-
-    public Optional<String> getErrorMsg() {
-        return Optional.ofNullable(errorMsg);
-    }
-
-    public Page setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
+    public Page markAuthentificationFailure(String errorMsg) {
+        this.wasAuthorizationAttempted = true;
+        this.hasAuthorizationSucceeded = false;
+        this.loginErrorMsg = errorMsg;
         return this;
+    }
+
+    public boolean wasAuthorizationAttempted() {
+        return wasAuthorizationAttempted;
+    }
+
+    public boolean hasAuthorizationSucceeded() {
+        return wasAuthorizationAttempted && hasAuthorizationSucceeded;
+    }
+
+    public Optional<String> getLoginErrorMsg() {
+        return Optional.ofNullable(loginErrorMsg);
+    }
+
+    public boolean hideNavBarNavigation() {
+        return this.hideNavBarNavigation;
     }
 
     public void render() {
