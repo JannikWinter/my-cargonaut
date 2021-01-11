@@ -69,6 +69,7 @@
                                             <th scope="col">Nach</th>
                                             <th scope="col">Abfahrtdatum</th>
                                             <th scope="col">Fahrzeug</th>
+                                            <th scope="col">Angenommen von:</th>
                                             <th scope="col">Status</th>
                                         </tr>
                                         </thead>
@@ -80,7 +81,26 @@
                                             <td>ENDE</td>
                                             <td>01.01.1970</td>
                                             <td>Fahrzeug Name</td>
-                                            <td>OK</td>
+                                            <td><input TYPE="text" name="cargonautee" class="form-control"></td>
+                                            <td>
+                                                <button type="button" class="btn btn-success">
+                                                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td><a href="#">USERS's Tour von START nach ENDE</a></td>
+                                            <td>START</td>
+                                            <td>ENDE</td>
+                                            <td>01.01.1970</td>
+                                            <td>Fahrzeug Name</td>
+                                            <td><input TYPE="text" name="cargonautee" class="form-control" placeholder="Locked" readonly></td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger">
+                                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                                </button>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
