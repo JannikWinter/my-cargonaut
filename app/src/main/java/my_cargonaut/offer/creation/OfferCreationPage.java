@@ -48,7 +48,7 @@ public class OfferCreationPage extends Page {
         return this.wasOfferCreationAttempted;
     }
 
-    public boolean wasCreationAttemptSuccessful() {
+    public boolean hasOfferCreationSucceeded() {
         return this.wasOfferCreationAttempted && this.hasOfferCreationSucceeded;
     }
 

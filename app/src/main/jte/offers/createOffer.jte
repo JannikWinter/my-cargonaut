@@ -4,6 +4,22 @@
 
 @layout.page(page = page, content = @`
 
+@if(page.wasOfferCreationAttempted())
+@if(page.hasOfferCreationSucceeded())
+<div class="container-fluid mx-auto">
+    <div class="alert alert-success">
+        <strong>Ihr Angebot wurde erstellt!</strong>
+    </div>
+</div>
+@else
+<div class="container-fluid mx-auto">
+    <div class="alert alert-danger">
+        <strong>Angebotserstellung fehlgeschlagen:</strong> ${"" + page.getCreationErrorMsg()}
+    </div>
+</div>
+@endif
+@endif
+
 <div class="container bg-light">
     <div class="row justify-content-center" style="align-self: center">
         <div class="col-6">
