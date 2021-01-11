@@ -1,66 +1,48 @@
+@import my_cargonaut.landing.LandingPage
+@import my_cargonaut.offer.search.OffersSearchPage
 
-@param my_cargonaut.landing.LandingPage page
+@param LandingPage page
 
 @layout.page(page = page, content = @`
-    <form>
-      <div class="container-fluid cargonautColor">
-        <div class="row">
-          <div class="col">
-            <div class="mb-3">
-              <label class="form-label" for="startCity">Ausgangsstadt</label>
-              <input type="text" class="form-control" id="startCity" placeholder="Von">
+
+<div class="container bg-light mt-5">
+    <div class="row justify-content-center" style="align-self: center">
+        <div class="col-6">
+            <div class="bg-light">
+                <nav class="flex-column" style="text-align: center">
+                    <h4 class="mt-2">Suche</h4>
+                    <br>
+                    <form class="form" role="form" name="${page.offerSearchForm}" method="get" action="${OffersSearchPage.PATH}">
+                    <div class="col form-group">
+                        <select class="form-control" id="createDropdown">
+                            <option>Angebot</option>
+                            <option>Gesuch</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="col form-group">
+                        <input name="${page.offerSearchFormOrig}" type="text" class="form-control" id="${page.offerSearchFormOrig}" placeholder="Von" required>
+                    </div>
+                    <div class="col form-group">
+                        <input name="${page.offerSearchFormDest}" type="text" class="form-control" id="${page.offerSearchFormDest}" placeholder="Nach" required>
+                    </div>
+                    <div class="col form-group">
+                        <input name="${page.offerSearchFormStartT}" type="datetime-local" class="form-control" id="${page.offerSearchFormStartT}">
+                    </div>
+                    <div class="col form-group">
+                        <input name="${page.offerSearchFormEndT}" type="datetime-local" class="form-control" id="${page.offerSearchFormEndT}">
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col form-group">
+                        <button class="btn btn-primary" name="apply" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                    </form>
+                </nav>
             </div>
-          </div>
-          <div class="col">
-            <div class="mb-3">
-              <label for="endCity" class="form-label">Zielstadt</label>
-              <input type="text" class="form-control" id="endCity" placeholder="Nach">
-            </div>
-          </div>
-          <div class="col"></div>
-          <div class="col">
-            <div class="mb-3">
-              <label for="startDate" class="form-label">Zeitraum von</label>
-              <input type="date" class="form-control" id="startDate" placeholder="">
-            </div>
-          </div>
-          <div class="col">
-            <div class="mb-3">
-              <label for="endDate" class="form-label">bis</label>
-              <input type="date" class="form-control" id="endDate" placeholder="">
-            </div>
-          </div>
         </div>
-        <div class="row">
-          <label class="col-1 col-form-label">Ladung</label>
-          <div class="col">
-            <div class="mb-3">
-              <label for="length" class="form-label">Laenge (cm)</label>
-              <input type="number" class="form-control" id="length" placeholder="0">
-            </div>
-          </div>
-          <div class="col">
-            <div class="mb-3">
-              <label for="width" class="form-label">Breite (cm)</label>
-              <input type="number" class="form-control" id="width" placeholder="0">
-            </div>
-          </div>
-          <div class="col">
-            <div class="mb-3">
-              <label for="height" class="form-label">Hoehe (cm)</label>
-              <input type="number" class="form-control" id="height" placeholder="0">
-            </div>
-          </div>
-          <div class="col"></div>
-          <div class="col">
-            <label for="searchType" class="form-label">Suche...</label>
-            <select class="form-select" id="searchType" aria-label="choose between offer and request">
-              <option selected value="0">Angebote</option>
-              <option value="1">Gesuche</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </form>
+    </div>
+</div>
+
 `)
 

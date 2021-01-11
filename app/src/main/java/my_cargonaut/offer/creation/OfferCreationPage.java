@@ -8,6 +8,11 @@ import java.util.Optional;
 public class OfferCreationPage extends Page {
 
     public static final String PATH = "/createOffer";
+    private final String templateFilePath;
+
+    private boolean wasOfferCreationAttempted;
+    private boolean hasOfferCreationSucceeded;
+    private String creationErrorMsg;
 
     // Offer Creation Form
     public static final String offerCForm = "offerCreate";
@@ -20,15 +25,12 @@ public class OfferCreationPage extends Page {
     public static final String offerCFormDepth = "offerCreateDepth";
     public static final String offerCFormDesc = "offerCreateDescription";
 
-    private boolean wasOfferCreationAttempted;
-    private boolean hasOfferCreationSucceeded;
-    private String creationErrorMsg;
-
     public OfferCreationPage(Context ctx) {
         super(ctx);
         isNotAccessRestricted = false;
         wasOfferCreationAttempted = false;
         hasOfferCreationSucceeded = false;
+        templateFilePath = "offer/creation/createOffer.jte";
     }
 
     public OfferCreationPage markOfferCreationSuccess() {
@@ -58,6 +60,6 @@ public class OfferCreationPage extends Page {
 
     @Override
     public String getTemplate() {
-        return "offers/createOffer.jte";
+        return templateFilePath;
     }
 }

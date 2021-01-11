@@ -20,14 +20,14 @@
 @endif
 @endif
 
-<div class="container bg-light">
+<div class="container bg-light mt-5">
     <div class="row justify-content-center" style="align-self: center">
         <div class="col-6">
             <div class="bg-light">
                 <nav class="flex-column" style="text-align: center">
                     <h4 class="mt-2">Erstellen</h4>
                     <br>
-                    <form class="form was-validated" role="form" name="${OfferCreationPage.offerCForm}" method="post" target="${OfferCreationPage.PATH}">
+                    <form class="form was-validated" role="form" name="${OfferCreationPage.offerCForm}" method="post" action="${OfferCreationPage.PATH}">
                     <div class="col form-group">
                         <select class="form-control" id="createDropdown">
                             <option>Angebot</option>

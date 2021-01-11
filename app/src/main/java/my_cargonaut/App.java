@@ -15,6 +15,8 @@ import my_cargonaut.landing.LandingPage;
 import my_cargonaut.login.LoginController;
 import my_cargonaut.offer.creation.OfferCreationController;
 import my_cargonaut.offer.creation.OfferCreationPage;
+import my_cargonaut.offer.search.OffersSearchController;
+import my_cargonaut.offer.search.OffersSearchPage;
 import my_cargonaut.registration.RegistrationController;
 import my_cargonaut.registration.RegistrationPage;
 import my_cargonaut.utility.dataClasses.User;
@@ -42,10 +44,13 @@ public class App {
             // Landing page
             // before(LandingPage.PATH, LoginController.ensureLogin);
             get(LandingPage.PATH, LandingController.serveLandingPage);
-            post(LandingPage.PATH, LandingController.serveLandingPage);
+            post(LandingPage.PATH, LandingController.handleLandingPagePost);
+            // Searching for Offers
+            get(OffersSearchPage.PATH, OffersSearchController.serveOffersSearchPage);
+            post(OffersSearchPage.PATH, OffersSearchController.handleOffersSearchPost);
             // Logout handling
             get("/logout", LoginController.handleLogout);
-            //Registration handling
+            // Registration handling
             get(RegistrationPage.PATH, RegistrationController.serveRegistrationPage);
             post(RegistrationPage.PATH, RegistrationController.handleRegistration);
             // Offer creation
