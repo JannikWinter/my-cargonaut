@@ -11,6 +11,13 @@ public class RegistrationPage extends Page {
 
     public static final String PATH = "/register";
 
+    // Registration Form
+    public static final String regForm = "registration";
+    public static final String regFormUsername = "registerName";
+    public static final String regFormEmail = "registerMail";
+    public static final String regFormPassword = "registerPw";
+    public static final String regFormPassword2 = "registerPw2";
+
     private boolean hasRegistrationSucceeded;
     private boolean registrationAttempted;
     private String registrationErrorMsg;
@@ -42,10 +49,10 @@ public class RegistrationPage extends Page {
     }
 
     private void addFormParamValues(Map<String, String> params) {
-        enteredUserName = params.get("registerName");
-        enteredMail = params.get("registerMail");
-        enteredPassword = params.get("registerPw");
-        enteredPassword2 = params.get("registerPw2");
+        enteredUserName = params.get(regFormUsername);
+        enteredMail = params.get(regFormEmail);
+        enteredPassword = params.get(regFormPassword);
+        enteredPassword2 = params.get(regFormPassword2);
     }
 
     public boolean wasRegistrationAttempted() {
@@ -64,7 +71,7 @@ public class RegistrationPage extends Page {
 
     public String getEnteredPw2() { return Optional.ofNullable(enteredPassword2).orElse(""); }
 
-    public String getRegistrationErrorMsg() { return Optional.ofNullable(registrationErrorMsg).orElse(""); }
+    public String getRegistrationErrorMsg() { return Optional.ofNullable(registrationErrorMsg).orElse("Unbekannter Registrierungsfehler"); }
 
     @Override
     public String getTemplate() {

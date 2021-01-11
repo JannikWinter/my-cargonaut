@@ -1,6 +1,9 @@
 @import my_cargonaut.Page
 @import gg.jte.Content
 @import my_cargonaut.utility.FormManUtils
+@import my_cargonaut.offer.creation.OfferCreationPage
+@import my_cargonaut.landing.LandingPage
+@import my_cargonaut.registration.RegistrationPage
 
 @param Page page
 @param Content content
@@ -28,7 +31,7 @@
                 <style type="text/css">
                     body { background: #caf3e8 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
                 </style>
-                <a class="navbar-brand" href="/">
+                <a class="navbar-brand" href="${LandingPage.PATH}">
                     <img src="/img/semi_androidMyCargonaut.svg" style="height: 50px" class="d-inline-block align-top" alt="">
                     </a>
 
@@ -36,13 +39,13 @@
                 <div class="collapse navbar-collapse" id="mainNavbar">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item px-2">
-                            <button type="button" class="btn btn-primary">Eintrag erstellen</button>
+                            <a href="${OfferCreationPage.PATH}" role="button" class="btn btn-primary">Eintrag erstellen</a>
                         </li>
                     </ul>
                     @if(!(page.isUserLoggedIn()))
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item px-2">
-                            <a href="/register" role="button" class="btn btn-danger">Registrieren</a>
+                            <a href="${RegistrationPage.PATH}" role="button" class="btn btn-danger">Registrieren</a>
                         </li>
                         <!-- Excempt from https://www.codeply.com/go/XefCTinzkY/bootstrap-4-navbar-with-login-form -->
                         <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
@@ -97,9 +100,17 @@
             @endif
             @endif
 
+            @if(page.hasAccess())
             <div class="container-fluid text-white" id="content">
                 ${content}
             </div>
+            @else
+            <div class="container-fluid">
+                <div class="alert alert-danger">
+                    <strong>Anmeldung erforderlich:</strong> Um diese Funktion zu nutzen muss man angemeldet sein
+                </div>
+            </div>
+            @endif
 
             <!-- Footer -->
             <footer class="bg-light text-center text-lg-start fixed-bottom">

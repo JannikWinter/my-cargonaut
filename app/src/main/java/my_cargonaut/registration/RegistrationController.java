@@ -13,21 +13,17 @@ import static my_cargonaut.utility.SessionManUtils.sessionAttributeRegisteredUse
 
 public class RegistrationController {
 
+    private static final RegistrationService registrationService = RegistrationService.getInstance();
+
     public static Handler handleRegistration = ctx -> {
         RegistrationPage page;
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = FormManUtils.createFormParamMap(ctx);
         String newUsername, email, password, checkPassword;
 
-        Map<String, List<String>> params = ctx.formParamMap();
-        Optional<List<String>> optList;
-        for(Map.Entry<String, List<String>> entry : params.entrySet()){
-            optList = Optional.ofNullable(entry.getValue());
-            optList.ifPresentOrElse(list -> map.put(entry.getKey(), list.get(0)), () -> map.put(entry.getKey(), ""));
-        }
-        newUsername = map.get(FormManUtils.regFormUsername);
-        email = map.get(FormManUtils.regFormEmail);
-        password = map.get(FormManUtils.regFormPassword);
-        checkPassword = map.get(FormManUtils.regFormPassword2);
+        newUsername = map.get(RegistrationPage.regFormUsername);
+        email = map.get(RegistrationPage.regFormEmail);
+        password = map.get(RegistrationPage.regFormPassword);
+        checkPassword = map.get(RegistrationPage.regFormPassword2);
 
         if(!password.equals(checkPassword)) {
             // Render registration page with info that passwords didn't match -> SHOULD NOT HAPPEN
@@ -37,7 +33,7 @@ public class RegistrationController {
             return;
         }
         try {
-            if (!RegistrationService.register(newUsername, password, email)) {
+            if (!registrationService.register(newUsername, password, email)) {
                 // Render registration page with info that username is already taken
                 page = new RegistrationPage(ctx);
                 page.markRegistrationFailure(map, "Der gewählte Nutzername ist bereits vergeben");

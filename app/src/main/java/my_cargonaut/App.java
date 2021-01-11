@@ -3,7 +3,6 @@
  */
 package my_cargonaut;
 
-import gg.jte.Content;
 import gg.jte.ContentType;
 import gg.jte.TemplateEngine;
 import gg.jte.resolve.DirectoryCodeResolver;
@@ -14,18 +13,14 @@ import io.javalin.plugin.rendering.template.JavalinJte;
 import my_cargonaut.landing.LandingController;
 import my_cargonaut.landing.LandingPage;
 import my_cargonaut.login.LoginController;
+import my_cargonaut.offer.creation.OfferCreationController;
+import my_cargonaut.offer.creation.OfferCreationPage;
 import my_cargonaut.registration.RegistrationController;
 import my_cargonaut.registration.RegistrationPage;
-import my_cargonaut.user.User;
+import my_cargonaut.utility.dataClasses.User;
 import my_cargonaut.user.UserRegister;
-import org.eclipse.jetty.server.SessionIdManager;
-import org.eclipse.jetty.server.session.SessionData;
-import org.eclipse.jetty.server.session.SessionDataMap;
-import org.eclipse.jetty.server.session.SessionDataStore;
-import org.eclipse.jetty.server.session.SessionHandler;
 
 import java.nio.file.Path;
-import java.util.HashMap;
 
 import static io.javalin.apibuilder.ApiBuilder.before;
 import static io.javalin.apibuilder.ApiBuilder.get;
@@ -45,7 +40,7 @@ public class App {
 
         app.routes(() -> {
             // Landing page
-            before(LandingPage.PATH, LoginController.clearSessionOnLogOut);
+            // before(LandingPage.PATH, LoginController.ensureLogin);
             get(LandingPage.PATH, LandingController.serveLandingPage);
             post(LandingPage.PATH, LandingController.serveLandingPage);
             // Logout handling
@@ -53,7 +48,9 @@ public class App {
             //Registration handling
             get(RegistrationPage.PATH, RegistrationController.serveRegistrationPage);
             post(RegistrationPage.PATH, RegistrationController.handleRegistration);
-
+            // Offer creation
+            get(OfferCreationPage.PATH, OfferCreationController.serveOfferCreationPage);
+            post(OfferCreationPage.PATH, OfferCreationController.handleOfferCreationPost);
 
             app.error(404, LandingController.serveNotFoundPage);
         });

@@ -11,13 +11,7 @@ import static my_cargonaut.utility.SessionManUtils.sessionAttributeLoggedInUsern
 
 public class LoginController {
 
-    // TODO: Ensure login for "Gesuche erstellen", "Deal abschließen"
-
-    public static Handler clearSessionOnLogOut = ctx -> {
-
-        System.out.println((String)ctx.sessionAttribute(sessionAttributeLoggedInUsername));
-        //if(ctx.pathParam("status").)
-    };
+    private static final LoginService loginService = LoginService.getInstance();
 
     public static Handler handleLogout = ctx -> {
         ctx.sessionAttribute(sessionAttributeLoggedInUsername, null);
@@ -30,7 +24,7 @@ public class LoginController {
         String password = ctx.formParam(FormManUtils.loginFormPassword);
 
         try {
-            if (!LoginService.authenticate(username, password)) {
+            if (!loginService.authenticate(username, password)) {
                 return page.markAuthentificationFailure("Falsches Passwort");
             } else {
                 ctx.sessionAttribute(sessionAttributeLoggedInUsername, username);

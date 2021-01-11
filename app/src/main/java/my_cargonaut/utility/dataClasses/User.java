@@ -1,4 +1,4 @@
-package my_cargonaut.user;
+package my_cargonaut.utility.dataClasses;
 
 public class User {
 

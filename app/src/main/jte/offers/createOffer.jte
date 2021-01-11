@@ -1,0 +1,63 @@
+@import my_cargonaut.offer.creation.OfferCreationPage;
+
+@param my_cargonaut.offer.creation.OfferCreationPage page
+
+@layout.page(page = page, content = @`
+
+<div class="container bg-light">
+    <div class="row justify-content-center" style="align-self: center">
+        <div class="col-6">
+            <div class="bg-light">
+                <nav class="flex-column" style="text-align: center">
+                    <h4 class="mt-2">Erstellen</h4>
+                    <br>
+                    <form class="form was-validated" role="form" name="${OfferCreationPage.offerCForm}" method="post" target="${OfferCreationPage.PATH}">
+                    <div class="col form-group">
+                        <select class="form-control" id="createDropdown">
+                            <option>Angebot</option>
+                            <option>Gesuch</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="col form-group">
+                        <input name="${OfferCreationPage.offerCFormStart}" type="text" class="form-control" id="${OfferCreationPage.offerCFormStart}" placeholder="Von" required>
+                    </div>
+                    <div class="col form-group">
+                        <input name="${OfferCreationPage.offerCFormDest}" type="text" class="form-control" id="${OfferCreationPage.offerCFormDest}" placeholder="Nach" required>
+                    </div>
+                    <div class="col form-group">
+                        <input name="${OfferCreationPage.offerCFormStartTime}" type="datetime-local" class="form-control" id="${OfferCreationPage.offerCFormStartTime}" required>
+                    </div>
+                    <div class="col form-group">
+                        <input name="${OfferCreationPage.offerCFormWeight}" type="text" class="form-control" id="${OfferCreationPage.offerCFormWeight}" placeholder="Gewicht">
+                    </div>
+                    <div class="col form-group">
+                        <div class="row">
+                            <div class="col form-group">
+                                <input name="${OfferCreationPage.offerCFormHeight}" type="text" class="form-control" id="${OfferCreationPage.offerCFormHeight}" placeholder="Höhe">
+                            </div>
+                            <div class="col form-group">
+                                <input name="${OfferCreationPage.offerCFormLength}" type="text" class="form-control" id="${OfferCreationPage.offerCFormLength}" placeholder="Breite">
+                            </div>
+                            <div class="col form-group">
+                                <input name="${OfferCreationPage.offerCFormDepth}" type="text" class="form-control" id="${OfferCreationPage.offerCFormDepth}" placeholder="Tiefe">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col form-group">
+                        <textarea name="${OfferCreationPage.offerCFormDesc}" class="form-control" id="${OfferCreationPage.offerCFormDesc}" rows="3" placeholder="Beschreibung"></textarea>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="col form-group">
+                        <button class="btn btn-primary" name="apply" type="submit"><i class="fa fa-plus"></i></button>
+                    </div>
+                    </form>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+`)

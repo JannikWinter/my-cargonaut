@@ -1,7 +1,6 @@
 package my_cargonaut;
 
 import io.javalin.http.Context;
-import my_cargonaut.registration.RegistrationController;
 
 import java.util.Collections;
 import java.util.Optional;
@@ -12,6 +11,7 @@ public abstract class Page {
 
     protected final Context ctx;
     protected boolean hideNavBarNavigation;
+    protected boolean isNotAccessRestricted;
 
     private String currentUser;
     private boolean wasAuthorizationAttempted;
@@ -26,6 +26,7 @@ public abstract class Page {
         this.hasAuthorizationSucceeded = false;
         this.currentUser = ctx.sessionAttribute(sessionAttributeLoggedInUsername);
         this.hideNavBarNavigation = false;
+        this.isNotAccessRestricted = true;
         /*
         // TODO: Delete if registration works as intended
         Optional<String> tmp = Optional.ofNullable(ctx.sessionAttribute(sessionAttributeRegisteredUserName));
@@ -87,6 +88,10 @@ public abstract class Page {
 
     public boolean hideNavBarNavigation() {
         return this.hideNavBarNavigation;
+    }
+
+    public boolean hasAccess() {
+        return this.isNotAccessRestricted || isUserLoggedIn();
     }
 
     public void render() {

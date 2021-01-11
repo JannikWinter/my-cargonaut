@@ -2,6 +2,8 @@ package my_cargonaut.user;
 
 
 
+import my_cargonaut.utility.dataClasses.User;
+
 import java.util.HashMap;
 import java.util.Optional;
 
