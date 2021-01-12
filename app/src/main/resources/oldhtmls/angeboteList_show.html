@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyCargonaut</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"><script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style/bootstrap.css"> <!-- This is the MINTY stylesheet created at bootstrap.build-->
+    <link rel="icon" href="img/semi_androidMyCargonaut.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <style type="text/css">
+                    body { background: #caf3e8 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+                </style>
+                <a class="navbar-brand" href="#">
+                    <img src="img/semi_androidMyCargonaut.svg" style="height: 50px" class="d-inline-block align-top" alt="">
+                </a>
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item px-2">
+                            <button type="button" class="btn btn-primary">Eintrag erstellen</button>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item px-2">
+                            <button type="button" class="btn btn-info"><i class="fa fa-user"></i> Mein Profil</button>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+            <!-- Left-sided navbar-->
+            <div class="container bg-light table-responsive pt-2">
+                <table class="table table-striped table-hover">
+                    <thead class="table-border">
+                        <tr class="table-primary">
+                            <th scope="col" rowspan="2" style="vertical-align:middle;text-align:center;">#</th>
+                            <th scope="col" rowspan="2" style="vertical-align:middle;text-align:center;">Angebotstitel</th>
+                            <th scope="col" rowspan="2" style="vertical-align:middle;text-align:center;">Von</th>
+                            <th scope="col" rowspan="2" style="vertical-align:middle;text-align:center;">Nach</th>
+                            <th scope="col" rowspan="2" style="vertical-align:middle;text-align:center;">Abfahrtdatum</th>
+                            <th scope="col" rowspan="2" style="vertical-align:middle;text-align:center;">Abfahrtzeit</th>
+                            <th scope="col" colspan="3" class="text-center">Stauraum</th>
+                        </tr>
+                        <tr class="table-primary">
+                            <th scope="col">Höhe(cm)</th>
+                            <th scope="col">Breite(cm)</th>
+                            <th scope="col">Tiefe(cm)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><a href="#">USERS's Tour von START nach ENDE</a></td>
+                        <td>START</td>
+                        <td>ENDE</td>
+                        <td>01.01.1970</td>
+                        <td>00:00</td>
+                        <td>100</td>
+                        <td>100</td>
+                        <td>100</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Footer -->
+            <footer class="bg-light text-center text-lg-start fixed-bottom">
+                <!-- Grid container -->
+                <div class="container p-4">
+                    <!--Grid row-->
+                    <div class="row">
+                        <!--Grid column-->
+                        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                            <p>MyCargonaut GmBH<br />
+                                Musterstra&szlig;e 111<br />
+                                Geb&auml;ude 44<br />
+                                90210 Musterstadt</p>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                            <p><strong>Vertreten durch:</strong>
+                                Iason C. Argonaut</p>
+                            <p>Telefon: +49 (0) 123 44 55 66<br />
+                                E-Mail: contact@mycargonaut.de</p>
+
+                        </div>
+                    </div>
+                    <!--Grid row-->
+                </div>
+            </footer>
+            <!-- Footer -->
+        </div>
+    </div>
+</div>
+</body>
+</html>
