@@ -45,19 +45,11 @@ public class Vehicle implements java.io.Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Vehicle vehicle = (Vehicle) o;
-        if (!Objects.equals(model, vehicle.model)) return false;
-        if (!Objects.equals(brand, vehicle.brand)) return false;
-        return Objects.equals(currentCargoHold, vehicle.currentCargoHold);
+        return getBrand() == vehicle.getBrand() && Objects.equals(getModel(), vehicle.getModel()) && Objects.equals(getCurrentCargoHold(), vehicle.getCurrentCargoHold()) && Objects.equals(getMaxCargoHold(), vehicle.getMaxCargoHold());
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = model != null ? model.hashCode() : 0;
-        result = 31 * result + (brand != null ? brand.hashCode() : 0);
-        result = 31 * result;
-        result = 31 * result + (currentCargoHold != null ? currentCargoHold.hashCode() : 0);
-        return result;
+        return Objects.hash(getBrand(), getModel(), getCurrentCargoHold(), getMaxCargoHold());
     }
 }

@@ -1,6 +1,7 @@
 package my_cargonaut.utility.data_classes.user;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class User implements java.io.Serializable {
 
@@ -65,21 +66,17 @@ public class User implements java.io.Serializable {
         this.cityPostal = cityPostal;
         this.cellphoneNumber = cellphoneNumber;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         User user = (User) o;
-
-        if (!username.equals(user.username)) return false;
-        return password.equals(user.password);
+        return getPronoun() == user.getPronoun() && Objects.equals(getUsername(), user.getUsername()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getGivenName(), user.getGivenName()) && Objects.equals(getSurname(), user.getSurname()) && Objects.equals(getDob(), user.getDob()) && Objects.equals(getCity(), user.getCity()) && Objects.equals(getCityPostal(), user.getCityPostal()) && Objects.equals(getCellphoneNumber(), user.getCellphoneNumber());
     }
 
     @Override
     public int hashCode() {
-        int result = username.hashCode();
-        result = 31 * result + password.hashCode();
-        return result;
+        return Objects.hash(getPronoun(), getUsername(), getPassword(), getGivenName(), getSurname(), getDob(), getCity(), getCityPostal(), getCellphoneNumber());
     }
 }
