@@ -38,14 +38,14 @@ public class OfferPool implements java.io.Serializable {
                     if(filter.startLoc != null) {
                         if(!filter.startLoc.equals(offer.getRoute().getStartLoc())) return false;
                     } else {
-                        if(filter.startLocName != null && !filter.startLocName.equals(offer.getRoute().getStartLoc().getLocatioNname())) {
+                        if(filter.startLocName != null && !filter.startLocName.equals(offer.getRoute().getStartLoc().getLocationName())) {
                             return false;
                         }
                     }
                     if(filter.destLoc != null) {
                         if(!filter.destLoc.equals(offer.getRoute().getEndLoc())) return false;
                     } else {
-                        if(filter.destLocName != null && !filter.destLocName.equals(offer.getRoute().getEndLoc().getLocatioNname())) {
+                        if(filter.destLocName != null && !filter.destLocName.equals(offer.getRoute().getEndLoc().getLocationName())) {
                             return false;
                         }
                     }
@@ -61,12 +61,10 @@ public class OfferPool implements java.io.Serializable {
                             Measurements cargoMeas = filter.freeSpace;
                             Measurements cargoHold = offer.getFreeSpace().get();
 
-                            if((cargoHold.getHeight() < cargoMeas.getHeight())
-                                    || (cargoHold.getWidth() < cargoMeas.getWidth())
-                                    || (cargoHold.getDepth() < cargoMeas.getDepth())
-                                    || (cargoHold.getWeight() < cargoMeas.getDepth())) {
-                                return false;
-                            }
+                            return (!(cargoHold.getHeight() < cargoMeas.getHeight()))
+                                    && (!(cargoHold.getWidth() < cargoMeas.getWidth()))
+                                    && (!(cargoHold.getDepth() < cargoMeas.getDepth()))
+                                    && (!(cargoHold.getWeight() < cargoMeas.getDepth()));
                         }
                     } else {
                         if(offer.getFreeSpace().isPresent()) {
@@ -74,7 +72,7 @@ public class OfferPool implements java.io.Serializable {
                             if(filter.getHeight().isPresent() && cargoHold.getHeight() < cargoHold.getHeight()) return false;
                             if(filter.getWidth().isPresent() && cargoHold.getWidth() < cargoHold.getWidth()) return false;
                             if(filter.getDepth().isPresent() && cargoHold.getDepth() < cargoHold.getDepth()) return false;
-                            if(filter.getWeight().isPresent() && cargoHold.getWeight() < cargoHold.getWeight()) return false;
+                            return filter.getWeight().isEmpty() || !(cargoHold.getWeight() < cargoHold.getWeight());
                         }
                     }
                     return true;
