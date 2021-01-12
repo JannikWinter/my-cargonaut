@@ -1,4 +1,4 @@
-@import my_cargonaut.offer.search.OffersSearchPage
+@import gg.jte.support.ForSupport;import my_cargonaut.offer.search.OffersSearchPage
 
 @param OffersSearchPage page
 
@@ -124,5 +124,58 @@
         </form>
     </div>
 </div>
+
+<!-- now...the results -->
+<div class="container bg-light table-responsive pt-2">
+    <table class="table table-striped table-hover">
+        <thead class="table-border">
+            <tr class="table-primary">
+                <th scope="col" rowspan="2" style="vertical-align:middle;text-align:center;">#</th>
+                <th scope="col" rowspan="2" style="vertical-align:middle;text-align:center;">Angebotstitel</th>
+                <th scope="col" rowspan="2" style="vertical-align:middle;text-align:center;">Von</th>
+                <th scope="col" rowspan="2" style="vertical-align:middle;text-align:center;">Nach</th>
+                <th scope="col" rowspan="2" style="vertical-align:middle;text-align:center;">Abfahrtdatum</th>
+                <th scope="col" rowspan="2" style="vertical-align:middle;text-align:center;">Abfahrtzeit</th>
+                <th scope="col" colspan="3" class="text-center">Stauraum</th>
+            </tr>
+            <tr class="table-primary">
+                <th scope="col">Höhe(cm)</th>
+                <th scope="col">Breite(cm)</th>
+                <th scope="col">Tiefe(cm)</th>
+            </tr>
+        </thead>
+
+        @if(page.displaysQueryResult())
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td><a href="#">USERS's Tour von START nach ENDE</a></td>
+                <td>START</td>
+                <td>ENDE</td>
+                <td>01.01.1970</td>
+                <td>00:00</td>
+                <td>100</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+            @for(var el : ForSupport.of(page.getOfferList()))
+            <tr>
+                <th scope="row">${el.getIndex()}</th>
+                <td><a href="#">${"" + el.g}</a></td>
+                <td>START</td>
+                <td>ENDE</td>
+                <td>01.01.1970</td>
+                <td>00:00</td>
+                <td>100</td>
+                <td>100</td>
+                <td>100</td>
+            </tr>
+
+            @endfor
+        </tbody>
+        @endif
+    </table>
+</div>
+
 `)
 

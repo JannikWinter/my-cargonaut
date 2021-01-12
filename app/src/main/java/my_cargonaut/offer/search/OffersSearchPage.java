@@ -1,8 +1,6 @@
 package my_cargonaut.offer.search;
 
 import io.javalin.http.Context;
-import io.javalin.http.Handler;
-import my_cargonaut.Page;
 import my_cargonaut.utility.SearchPage;
 import my_cargonaut.utility.data_classes.offers.Offer;
 
@@ -12,7 +10,7 @@ public class OffersSearchPage extends SearchPage {
 
     public static final String PATH = "/searchOffers";
     private final String templateFilePath;
-    private boolean isQueryResult;
+    private boolean displaysQueryResult;
     private Map<String, String> enteredValues;
     private List<Offer> offerList;
 
@@ -25,7 +23,7 @@ public class OffersSearchPage extends SearchPage {
     public OffersSearchPage(Context ctx) {
         super(ctx);
         templateFilePath = "offer/search/searchOffers.jte";
-        isQueryResult = false;
+        displaysQueryResult = false;
     }
 
     public void enteredFormValues(Map<String, String> searchParams) {
@@ -33,10 +31,14 @@ public class OffersSearchPage extends SearchPage {
     }
 
     public OffersSearchPage markAsQueried(Map<String, String> searchParams, List<Offer> results) {
-        this.isQueryResult = true;
+        this.displaysQueryResult = true;
         this.enteredValues = searchParams;
         this.offerList = results;
         return this;
+    }
+
+    public boolean displaysQueryResult() {
+        return displaysQueryResult;
     }
 
     public List<Offer> getOfferList() {
