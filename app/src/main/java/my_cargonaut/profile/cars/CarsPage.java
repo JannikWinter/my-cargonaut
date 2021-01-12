@@ -21,8 +21,7 @@ public class CarsPage extends ProfileEditPage {
 
     public CarsPage(Context ctx){
         super(ctx);
-        //TODO add Filepath
-        templateFilePath="";
+        templateFilePath="profile/cars/carsProfile.jte";
     }
 
     @Override

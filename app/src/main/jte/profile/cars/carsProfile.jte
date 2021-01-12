@@ -1,4 +1,3 @@
-@import my_cargonaut.Page
 @import my_cargonaut.profile.deals.DealsPage;
 @import my_cargonaut.profile.edit.EditPage;
 @import my_cargonaut.profile.cars.CarsPage;
@@ -25,7 +24,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="brandDropdown"><h6>Marke</h6></label>
+                                            <label for="${CarsPage.ProfileCBrand}">Marke</label>
                                             <select class="form-control" name="${CarsPage.ProfileCBrand}" id="${CarsPage.ProfileCBrand}">
                                                 <option>Alfa-Romeo</option>
                                                 <option>AMG</option>
@@ -89,30 +88,30 @@
                                         </div>
                                         <br>
                                         <div class="form-group">
-                                            <label><h6>Freier Platz (aktuell)</h6></label>
+                                            <label>Freier Platz (aktuell)</label>
                                                 <div class="col">
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <label for="freeHeight">Höhe (cm)</label>
+                                                                <label for="${CarsPage.ProfileCFreeHeight}">Höhe (cm)</label>
                                                                 <input class="form-control" name="${CarsPage.ProfileCFreeHeight}" id="${CarsPage.ProfileCFreeHeight}">
                                                             </div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <label for="freeWidth">Breite (cm)</label>
+                                                                <label for="${CarsPage.ProfileCFreeWidth}">Breite (cm)</label>
                                                                 <input class="form-control" name="${CarsPage.ProfileCFreeWidth}" id="${CarsPage.ProfileCFreeWidth}">
                                                             </div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <label for="freeDepth">Tiefe (cm)</label>
+                                                                <label for="${CarsPage.ProfileCFreeDepth}">Tiefe (cm)</label>
                                                                 <input class="form-control" id="${CarsPage.ProfileCFreeDepth}" name="${CarsPage.ProfileCFreeDepth}">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="freeWeight">Gewicht (kg)</label>
+                                                        <label for="${CarsPage.ProfileCFreeWeight}">Gewicht (kg)</label>
                                                         <input class="form-control" name="${CarsPage.ProfileCFreeWeight}" id="${CarsPage.ProfileCFreeWeight}">
                                                     </div>
                                                 </div>
@@ -120,36 +119,36 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="modelInput"><h6>Model</h6></label>
-                                            <input type="text" class="form-control"name="${CarsPage.ProfileCModel}" id="${CarsPage.ProfileCModel}">
+                                            <label for="${CarsPage.ProfileCModel}">Model</label>
+                                            <input type="text" class="form-control" name="${CarsPage.ProfileCModel}" id="${CarsPage.ProfileCModel}">
                                         </div>
                                         <br>
                                         <div class="form-group">
-                                            <label><h6>Freier Platz (maximum)</h6></label>
+                                            <label>Freier Platz (maximum)</label>
                                             <div class="col">
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="form-group">
-                                                            <label for="maxHeight">Höhe (cm)</label>
-                                                            <input class="form-control" id="${CarsPage.ProfileCMaxHeight}">
+                                                            <label for="${CarsPage.ProfileCMaxHeight}">Höhe (cm)</label>
+                                                            <input class="form-control" name="${CarsPage.ProfileCMaxHeight}" id="${CarsPage.ProfileCMaxHeight}">
                                                         </div>
                                                     </div>
                                                     <div class="col">
                                                         <div class="form-group">
-                                                            <label for="maxWidth">Breite (cm)</label>
-                                                            <input class="form-control" id="maxWidth">
+                                                            <label for="${CarsPage.ProfileCMaxWidth}">Breite (cm)</label>
+                                                            <input class="form-control" name="${CarsPage.ProfileCMaxWidth}" id="${CarsPage.ProfileCMaxWidth}">
                                                         </div>
                                                     </div>
                                                     <div class="col">
                                                         <div class="form-group">
-                                                            <label for="maxDepth">Tiefe (cm)</label>
-                                                            <input class="form-control" id="maxDepth">
+                                                            <label for="${CarsPage.ProfileCMaxDepth}">Tiefe (cm)</label>
+                                                            <input class="form-control" name="${CarsPage.ProfileCMaxDepth}" id="${CarsPage.ProfileCMaxDepth}">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="maxWeight">Gewicht (kg)</label>
-                                                    <input class="form-control" id="maxWeight">
+                                                    <label for="${CarsPage.ProfileCMaxWeight}">Gewicht (kg)</label>
+                                                    <input class="form-control" name="${CarsPage.ProfileCMaxWeight}" id="${CarsPage.ProfileCMaxWeight}">
                                                 </div>
                                             </div>
                                         </div>

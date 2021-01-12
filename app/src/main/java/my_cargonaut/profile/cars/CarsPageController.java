@@ -11,9 +11,13 @@ public class CarsPageController {
         page.render();
     };
     public static Handler handleDealsPagePost = ctx -> {
-        DealsPage page = new DealsPage(ctx);
-        page = (DealsPage) LoginController.checkLoginPost(page, ctx);
-        page.render();
+        DealsPage page;
+        try {
+
+        }catch (Exception e){
+
+        }
+
     };
     public static Handler serveNotFoundPage = ctx -> {
         NotFoundPage page = new NotFoundPage(ctx);
