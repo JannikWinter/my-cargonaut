@@ -1,9 +1,9 @@
-package my_cargonaut.offer;
+package my_cargonaut.utility.data_classes.offers;
 
-import my_cargonaut.utility.dataClasses.Measurements;
-import my_cargonaut.utility.dataClasses.Tour;
-import my_cargonaut.utility.dataClasses.User;
-import my_cargonaut.utility.dataClasses.Vehicle;
+import my_cargonaut.utility.data_classes.Measurements;
+import my_cargonaut.utility.data_classes.Tour;
+import my_cargonaut.utility.data_classes.user.User;
+import my_cargonaut.utility.data_classes.Vehicle;
 
 import java.util.Optional;
 

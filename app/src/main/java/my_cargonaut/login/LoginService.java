@@ -1,7 +1,7 @@
 package my_cargonaut.login;
 
-import my_cargonaut.utility.dataClasses.User;
-import my_cargonaut.user.UserRegister;
+import my_cargonaut.utility.data_classes.user.User;
+import my_cargonaut.utility.data_classes.user.UserRegister;
 
 import java.util.Optional;
 

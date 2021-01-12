@@ -14,10 +14,16 @@ public class FormManUtils {
     public static final String loginFormName = "loginName";
     public static final String loginFormPassword = "loginPw";
 
-    public static Map<String, String> createFormParamMap(Context ctx) {
-        Map<String, String> map = new HashMap<>();
+    public static Map<String, String> createQueryParamMap(Context ctx) {
+        return createParamMap(ctx.queryParamMap());
+    }
 
-        Map<String, List<String>> params = ctx.formParamMap();
+    public static Map<String, String> createFormParamMap(Context ctx) {
+        return createParamMap(ctx.formParamMap());
+    }
+
+    private static Map<String, String> createParamMap(Map<String, List<String>> params) {
+        Map<String, String> map = new HashMap<>();
         Optional<List<String>> optList;
         for(Map.Entry<String, List<String>> entry : params.entrySet()){
             optList = Optional.ofNullable(entry.getValue());

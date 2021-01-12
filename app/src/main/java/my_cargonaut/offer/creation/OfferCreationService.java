@@ -1,8 +1,10 @@
 package my_cargonaut.offer.creation;
 
-import my_cargonaut.offer.Offer;
-import my_cargonaut.user.UserRegister;
-import my_cargonaut.utility.dataClasses.*;
+import my_cargonaut.utility.data_classes.offers.Offer;
+import my_cargonaut.utility.data_classes.offers.OfferPool;
+import my_cargonaut.utility.data_classes.user.UserRegister;
+import my_cargonaut.utility.data_classes.*;
+import my_cargonaut.utility.data_classes.user.User;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -13,11 +15,11 @@ public class OfferCreationService {
 
     private static OfferCreationService instance;
 
-    private final List<Offer> offerList;
+    private final OfferPool offerPool;
     private final UserRegister userRegister;
 
     private OfferCreationService() {
-        this.offerList = new LinkedList<>();
+        this.offerPool = OfferPool.getInstance();
         userRegister = UserRegister.getInstance();
     }
 
@@ -30,7 +32,7 @@ public class OfferCreationService {
     }
 
     private void addNewOffer(Offer offer) {
-        offerList.add(offer);
+        offerPool.addOffer(offer);
     }
 
     public static OfferCreationService getInstance() {
@@ -40,6 +42,10 @@ public class OfferCreationService {
         return OfferCreationService.instance;
     }
 
+
+    /*
+            Inner class in order to build an offer
+     */
     public class OfferBuilder {
 
         private final User user;

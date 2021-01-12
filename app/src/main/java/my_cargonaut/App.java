@@ -19,8 +19,8 @@ import my_cargonaut.offer.search.OffersSearchController;
 import my_cargonaut.offer.search.OffersSearchPage;
 import my_cargonaut.registration.RegistrationController;
 import my_cargonaut.registration.RegistrationPage;
-import my_cargonaut.utility.dataClasses.User;
-import my_cargonaut.user.UserRegister;
+import my_cargonaut.utility.data_classes.user.User;
+import my_cargonaut.utility.data_classes.user.UserRegister;
 
 import java.nio.file.Path;
 

@@ -45,7 +45,7 @@ public class OfferCreationController {
 
             page = new OfferCreationPage(ctx);
             page.markOfferCreationSuccess().render();
-        } catch (ParseException | IllegalStateException e) {
+        } catch (Exception e) {
             /*
              *      !!! SHOULD NOT HAPPEN !!!
              *      IllegalStateException MAY be thrown by offerBuilder.createOffer();

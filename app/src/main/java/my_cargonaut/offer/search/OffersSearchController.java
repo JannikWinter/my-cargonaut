@@ -4,26 +4,71 @@ import io.javalin.http.Handler;
 import my_cargonaut.landing.LandingPage;
 import my_cargonaut.login.LoginController;
 import my_cargonaut.utility.FormManUtils;
+import my_cargonaut.utility.data_classes.offers.Offer;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.text.ParseException;
+import java.time.format.DateTimeParseException;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class OffersSearchController {
 
+    private static final OffersSearchService offersSearchService = OffersSearchService.getInstance();
+
     public static Handler serveOffersSearchPage = ctx -> {
+        List<Offer> resultList;
+
+        Optional<Date> maybeDate1, maybeDate2;
+        String tmp;
+        OffersSearchService.OfferFilterConfigurator offerConfig = offersSearchService.getOfferFilterConfigurator();
+
         OffersSearchPage page = new OffersSearchPage(ctx);
-        Map<String, String> map = ctx.pathParamMap();
-        Map<String, String> map2 = FormManUtils.createFormParamMap(ctx);
-        Map<String, List<String>> map3 = ctx.queryParamMap();
-        if(Optional.ofNullable(map).isPresent()) {
-            System.out.println("test");
+        Map<String, String> map = FormManUtils.createQueryParamMap(ctx);
+
+        // Todo: implement filtering and saving of offers for the given query!
+        try{
+            maybeDate1 = offersSearchService.getMaybeDateFromString(map.get(page.offerSearchFormStartT));
+            maybeDate1.ifPresent(offerConfig::setStartDate);
+            maybeDate2 = offersSearchService.getMaybeDateFromString(map.get(page.offerSearchFormEndT));
+            maybeDate2.ifPresent(offerConfig::setEndDate);
+        } catch(ParseException e) {
+            e.printStackTrace();
         }
+        tmp = map.get(page.offerSearchFormOrig);
+        if(!tmp.equals("")) {
+            offerConfig.setStartLocationName(tmp);
+        }
+        tmp = map.get(page.offerSearchFormDest);
+        if(!tmp.equals("")) {
+            offerConfig.setDestinationName(tmp);
+        }
+        if(map.containsKey(page.offerSearchFormCargoWeight)) {
+            /*
+                    Might be null if the get-request came from the landing page!
+             */
+            if(!map.get(page.offerSearchFormCargoHeight).equals("")) {
+                offerConfig.setHeight(Double.parseDouble(page.offerSearchFormCargoHeight));
+            }
+            if(!map.get(page.offerSearchFormCargoWidth).equals("")) {
+                offerConfig.setWidth(Double.parseDouble(page.offerSearchFormCargoWidth));
+            }
+            if(!map.get(page.offerSearchFormCargoDepth).equals("")) {
+                offerConfig.setDepth(Double.parseDouble(page.offerSearchFormCargoDepth));
+            }
+            if(!map.get(page.offerSearchFormCargoWeight).equals("")) {
+                offerConfig.setWeight(Double.parseDouble(page.offerSearchFormCargoWeight));
+            }
+        }
+
+        resultList = offerConfig.queryOffersWithFilter();
+
+        page.markAsQueried(map, resultList);
         page.render();
     };
 
     public static Handler handleOffersSearchPost = ctx -> {
         // only POST-Request for now is via the Login-Form
+        // Todo: Watch out for further possible post requests!
         OffersSearchPage page = new OffersSearchPage(ctx);
         page = (OffersSearchPage)LoginController.checkLoginPost(page, ctx);
         page.render();
