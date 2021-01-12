@@ -1,57 +1,63 @@
 package my_cargonaut.utility.data_classes;
 
+import my_cargonaut.utility.data_classes.user.CarManufacturer;
+
+import java.util.Objects;
+
 public class Vehicle implements java.io.Serializable {
+    private CarManufacturer brand;
+    private String model;
+    private Measurements currentCargoHold;
+    private Measurements maxCargoHold;
 
-    private String nickname;
-    private String type;
-    private double maxCarryWeight;
-    private Measurements cargoHold;
-
-    public Vehicle(String nickname, String type, double maxCarryWeight, Measurements cargoHold) {
-        this.nickname = nickname;
-        this.type = type;
-        this.maxCarryWeight = maxCarryWeight;
-        this.cargoHold = cargoHold;
+    public Vehicle() {
+        this.brand = CarManufacturer.Lancia;
+        this.model = "Delta HF Integrale \"Evoluzione\"";
+        this.currentCargoHold = new Measurements(1,1,1,1);
+        this.maxCargoHold = new Measurements(1,1,1,1);
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getModel() {
+        return model;
+    }
+    public CarManufacturer getBrand() {
+        return brand;
     }
 
-    public String getType() {
-        return type;
+    public Measurements getCurrentCargoHold() {
+        return currentCargoHold;
     }
 
-    public double getMaxCarryWeight() {
-        return maxCarryWeight;
+    public Measurements getMaxCargoHold() {
+        return maxCargoHold;
     }
-
-    public Measurements getCargoHold() {
-        return cargoHold;
+    public void setCarInformation(String brand, String model, double curHeight, double curWidth,
+                             double curDepth, double curWeight, double maxHeight, double maxWidth,
+                             double maxDepth, double maxWeight){
+        this.brand=CarManufacturer.valueOf(brand);
+        this.model=model;
+        this.currentCargoHold=new Measurements(curHeight,curWidth,curDepth,curWeight);
+        this.maxCargoHold=new Measurements(maxHeight,maxWidth,maxDepth,maxWeight);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Vehicle vehicle = (Vehicle) o;
-
-        if (Double.compare(vehicle.maxCarryWeight, maxCarryWeight) != 0) return false;
-        if (nickname != null ? !nickname.equals(vehicle.nickname) : vehicle.nickname != null) return false;
-        if (type != null ? !type.equals(vehicle.type) : vehicle.type != null) return false;
-        return cargoHold != null ? cargoHold.equals(vehicle.cargoHold) : vehicle.cargoHold == null;
+        if (!Objects.equals(model, vehicle.model)) return false;
+        if (!Objects.equals(brand, vehicle.brand)) return false;
+        return Objects.equals(currentCargoHold, vehicle.currentCargoHold);
     }
 
     @Override
     public int hashCode() {
         int result;
         long temp;
-        result = nickname != null ? nickname.hashCode() : 0;
-        result = 31 * result + (type != null ? type.hashCode() : 0);
-        temp = Double.doubleToLongBits(maxCarryWeight);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + (cargoHold != null ? cargoHold.hashCode() : 0);
+        result = model != null ? model.hashCode() : 0;
+        result = 31 * result + (brand != null ? brand.hashCode() : 0);
+        result = 31 * result;
+        result = 31 * result + (currentCargoHold != null ? currentCargoHold.hashCode() : 0);
         return result;
     }
 }
