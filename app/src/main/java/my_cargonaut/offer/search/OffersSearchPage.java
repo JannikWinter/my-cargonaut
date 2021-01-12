@@ -18,7 +18,7 @@ public class OffersSearchPage extends SearchPage {
     public final String offerSearchFormCargoHeight = "offerSearchFormCargoHeight";
     public final String offerSearchFormCargoWidth = "offerSearchFormCargoWidth";
     public final String offerSearchFormCargoDepth = "offerSearchFormCargoDepth";
-    public final String offerSearchFormCargoWeight = "offerSearchFormCargoWeight";
+    public final String offerSearchFormCargoMaxWeight = "offerSearchFormCargoMaxWeight";
 
     public OffersSearchPage(Context ctx) {
         super(ctx);
