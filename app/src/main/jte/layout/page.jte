@@ -1,9 +1,9 @@
 @import my_cargonaut.Page
 @import gg.jte.Content
-@import my_cargonaut.utility.FormManUtils
+@import my_cargonaut.profile.cars.CarsPage;import my_cargonaut.utility.FormManUtils
 @import my_cargonaut.offer.creation.OfferCreationPage
 @import my_cargonaut.landing.LandingPage
-@import my_cargonaut.registration.RegistrationPage
+@import my_cargonaut.registration.RegistrationPage;import my_cargonaut.utility.data_classes.user.User
 
 @param Page page
 @param Content content
@@ -70,7 +70,7 @@
                     @else
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item px-2">
-                            <a href="Profile_Edit.html" class="btn btn-info text-white" role="button">
+                            <a href="${CarsPage.getDynamicPath(page.getCurrentUser().map(User::getUsername).orElse(""))}" class="btn btn-info text-white" role="button">
                                 <i class="fa fa-user"></i> Mein Profil</a>
                         </li>
                          <li class="nav-item px-2">
@@ -86,7 +86,7 @@
             @if(page.hasAuthorizationSucceeded())
             <div class="container-fluid">
                 <div class="alert alert-success">
-                    <strong>Login erfolgreich:</strong> ${"" + page.getCurrentUser().orElse("Sollte nie passieren!")} ist angemeldet
+                    <strong>Login erfolgreich:</strong> ${"" + page.getCurrentUserName().orElse("Sollte nie passieren!")} ist angemeldet
                 </div>
             </div>
             @else

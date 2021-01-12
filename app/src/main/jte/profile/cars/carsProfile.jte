@@ -1,7 +1,9 @@
 @import my_cargonaut.profile.deals.DealsPage;
 @import my_cargonaut.profile.edit.EditPage;
 @import my_cargonaut.profile.cars.CarsPage;
+
 @param my_cargonaut.profile.cars.CarsPage page
+
     @layout.page(page = page, content = @`
             <br>
             <div class="container">
@@ -16,8 +18,9 @@
                         </div>
                     </div>
                     <!-- Right-sided content -> Edit-Profile -->
-                    <form class="form" role="form" name="${CarsPage.ProfileCForm}" id="${CarsPage.ProfileCForm}" method="post" action="${CarsPage.PATH}">
+
                     <div class="col-lg-10 col-md-12">
+                        <form class="form text-body" role="form" name="${CarsPage.ProfileCForm}" id="${CarsPage.ProfileCForm}" method="post" action="${CarsPage.PATH}">
                         <div class="bg-light">
                             <div class="container">
                                 <h2 class="pt-2">Mein Fahrzeug</h2>
@@ -158,8 +161,8 @@
                                 <button type="submit" class="btn btn-primary mb-2">Änderungen bestätigen</button>
                             </div>
                         </div>
+                        </form>
                     </div>
-                    </form>
                 </div>
             </div>
 

@@ -2,9 +2,12 @@ package my_cargonaut.profile.cars;
 
 import io.javalin.http.Context;
 import my_cargonaut.utility.ProfileEditPage;
+import my_cargonaut.utility.data_classes.Vehicle;
+
+import java.util.Optional;
 
 public class CarsPage extends ProfileEditPage {
-    public static final String PATH = "/carsProfile";
+    public static final String PATH = BASEPATH + "/carsProfile";
     private final String templateFilePath;
 
     public static final String ProfileCForm = "carsProfile";
@@ -19,13 +22,28 @@ public class CarsPage extends ProfileEditPage {
     public static final String ProfileCMaxDepth = "carsMaxDepth";
     public static final String ProfileCMaxWeight = "carsMaxWeight";
 
+    private Vehicle vehicle;
+
     public CarsPage(Context ctx){
         super(ctx);
         templateFilePath="profile/cars/carsProfile.jte";
     }
 
+    public CarsPage setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+        return this;
+    }
+
+    public Optional<Vehicle> getVehicle() {
+        return Optional.ofNullable(vehicle);
+    }
+
     @Override
     public String getTemplate(){
         return templateFilePath;
+    }
+
+    public static String getDynamicPath(String username) {
+        return PATH.replace(":username", username);
     }
 }
