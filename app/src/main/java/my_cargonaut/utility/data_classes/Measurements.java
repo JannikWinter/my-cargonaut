@@ -1,5 +1,7 @@
 package my_cargonaut.utility.data_classes;
 
+import java.util.Objects;
+
 public class Measurements extends Size implements java.io.Serializable {
 
     private double weight;
@@ -28,18 +30,12 @@ public class Measurements extends Size implements java.io.Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-
         Measurements that = (Measurements) o;
-
-        return Double.compare(that.weight, weight) == 0;
+        return Double.compare(that.getWeight(), getWeight()) == 0;
     }
 
     @Override
     public int hashCode() {
-        int result = super.hashCode();
-        long temp;
-        temp = Double.doubleToLongBits(weight);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
+        return Objects.hash(super.hashCode(), getWeight());
     }
 }

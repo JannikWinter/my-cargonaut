@@ -17,9 +17,7 @@
                     <div class="mb-3">
                         <div class="form-group">
                             <label class="form-label" for="${page.offerSearchFormOrig}">Ausgangsstadt</label>
-                            <input name="${page.offerSearchFormOrig}" type="text" class="form-control"
-                                id="${page.offerSearchFormOrig}" placeholder="Von"
-                                value="${page.getEnteredValue(page.offerSearchFormOrig)}">
+                            <input name="${page.offerSearchFormOrig}" type="text" class="form-control" id="${page.offerSearchFormOrig}" placeholder="Von">
                         </div>
                     </div>
                 </div>
@@ -27,9 +25,7 @@
                 <div class="mb-3">
                     <div class="form-group">
                         <label for="${page.offerSearchFormDest}" class="form-label">Zielstadt</label>
-                        <input name="${page.offerSearchFormDest}" type="text" class="form-control"
-                            id="${page.offerSearchFormDest}" placeholder="Nach"
-                            value="${page.getEnteredValue(page.offerSearchFormDest)}">
+                        <input name="${page.offerSearchFormDest}" type="text" class="form-control" id="${page.offerSearchFormDest}" placeholder="Nach">
                     </div>
                 </div>
               </div>
@@ -38,9 +34,7 @@
                 <div class="mb-3">
                     <div class="form-group">
                         <label for="${page.offerSearchFormStartT}" class="form-label">Zeitraum von</label>
-                        <input name="${page.offerSearchFormStartT}" type="datetime-local" class="form-control"
-                            id="${page.offerSearchFormStartT}" placeholder=""
-                            value="${page.getEnteredValue(page.offerSearchFormStartT)}">
+                        <input name="${page.offerSearchFormStartT}" type="date" class="form-control" id="${page.offerSearchFormStartT}" placeholder="">
                     </div>
                 </div>
               </div>
@@ -48,9 +42,7 @@
                 <div class="mb-3">
                     <div class="form-group">
                         <label for="${page.offerSearchFormEndT}" class="form-label">bis</label>
-                        <input name="${page.offerSearchFormEndT}" type="datetime-local" class="form-control"
-                            id="${page.offerSearchFormEndT}" placeholder=""
-                            value="${page.getEnteredValue(page.offerSearchFormEndT)}">
+                        <input name="${page.offerSearchFormEndT}" type="date" class="form-control" id="${page.offerSearchFormEndT}" placeholder="">
                     </div>
                 </div>
               </div>
@@ -64,9 +56,7 @@
                 <div class="mb-3">
                     <div class="form-group">
                         <label for="${page.offerSearchFormCargoHeight}" class="form-label">Hoehe (cm)</label>
-                        <input name="${page.offerSearchFormCargoHeight}" type="number" class="form-control"
-                            id="${page.offerSearchFormCargoHeight}" placeholder="0" min="0"
-                            value="${page.getEnteredValue(page.offerSearchFormCargoHeight)}">
+                        <input name="${page.offerSearchFormCargoHeight}" type="number" class="form-control" id="${page.offerSearchFormCargoHeight}" placeholder="0">
                     </div>
                 </div>
               </div>
@@ -74,9 +64,7 @@
                 <div class="mb-3">
                     <div class="form-group">
                         <label for="${page.offerSearchFormCargoWidth}" class="form-label">Breite (cm)</label>
-                        <input name="${page.offerSearchFormCargoWidth}" type="number" class="form-control"
-                            id="${page.offerSearchFormCargoWidth}" placeholder="0" min="0"
-                            value="${page.getEnteredValue(page.offerSearchFormCargoWidth)}">
+                        <input name="${page.offerSearchFormCargoWidth}" type="number" class="form-control" id="${page.offerSearchFormCargoWidth}" placeholder="0">
                     </div>
                 </div>
               </div>
@@ -84,21 +72,9 @@
                 <div class="mb-3">
                     <div class="form-group">
                         <label for="${page.offerSearchFormCargoDepth}" class="form-label">Tiefe (cm)</label>
-                        <input name="${page.offerSearchFormCargoDepth}" type="number" class="form-control"
-                            id="${page.offerSearchFormCargoDepth}" placeholder="0" min="0"
-                            value="${page.getEnteredValue(page.offerSearchFormCargoDepth)}">
+                        <input name="${page.offerSearchFormCargoDepth}" type="number" class="form-control" id="${page.offerSearchFormCargoDepth}" placeholder="0">
                     </div>
                 </div>
-              </div>
-              <div class="col">
-                  <div class="mb-3">
-                      <div class="form-group">
-                          <label for="${page.offerSearchFormCargoWeight}" class="form-label">Gewicht (kg)</label>
-                          <input name="${page.offerSearchFormCargoWeight}" type="number" class="form-control"
-                              id="${page.offerSearchFormCargoWeight}" placeholder="0" min="0"
-                              value="${page.getEnteredValue(page.offerSearchFormCargoWeight)}">
-                      </div>
-                  </div>
               </div>
               <div class="col"></div>
               <div class="col">

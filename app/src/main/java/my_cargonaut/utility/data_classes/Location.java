@@ -22,7 +22,7 @@ public class Location implements java.io.Serializable {
         return lat;
     }
 
-    public String getLocatioNname() {
+    public String getLocationName() {
         return locationName;
     }
 
