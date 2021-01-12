@@ -3,15 +3,14 @@ package my_cargonaut.profile.deals;
 import io.javalin.http.Context;
 import my_cargonaut.utility.ProfileEditPage;
 
-public class CarsPage extends ProfileEditPage {
-    public static final String PATH = "/";
+public class DealsPage extends ProfileEditPage {
+    public static final String PATH = "/dealsProfile";
     private final String templateFilePath;
 
 
-    public CarsPage(Context ctx){
+    public DealsPage(Context ctx){
         super(ctx);
-        //TODO add Filepath
-        templateFilePath="";
+        templateFilePath="/profile/deals/dealsProfile.jte";
     }
 
     @Override

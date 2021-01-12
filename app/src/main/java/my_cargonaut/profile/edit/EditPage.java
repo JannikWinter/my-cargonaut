@@ -4,14 +4,13 @@ import io.javalin.http.Context;
 import my_cargonaut.utility.ProfileEditPage;
 
 public class EditPage extends ProfileEditPage {
-    public static final String PATH = "/";
+    public static final String PATH = "/editProfile";
     private final String templateFilePath;
 
 
     public EditPage(Context ctx){
         super(ctx);
-        //TODO add Filepath
-        templateFilePath="";
+        templateFilePath="/profile/edit/editProfile.jte";
     }
 
     @Override

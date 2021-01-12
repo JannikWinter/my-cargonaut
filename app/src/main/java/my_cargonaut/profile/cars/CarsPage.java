@@ -4,7 +4,7 @@ import io.javalin.http.Context;
 import my_cargonaut.utility.ProfileEditPage;
 
 public class CarsPage extends ProfileEditPage {
-    public static final String PATH = "/";
+    public static final String PATH = "/carsProfile";
     private final String templateFilePath;
 
 
