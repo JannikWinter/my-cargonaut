@@ -1,15 +1,12 @@
 package my_cargonaut.offer.search;
 
 import io.javalin.http.Handler;
-import my_cargonaut.landing.LandingPage;
 import my_cargonaut.login.LoginController;
 import my_cargonaut.utility.FormManUtils;
 import my_cargonaut.utility.data_classes.offers.Offer;
 
 import java.text.ParseException;
-import java.time.format.DateTimeParseException;
 import java.util.*;
-import java.util.stream.Stream;
 
 public class OffersSearchController {
 
@@ -42,7 +39,7 @@ public class OffersSearchController {
         if(!tmp.equals("")) {
             offerConfig.setDestinationName(tmp);
         }
-        if(map.containsKey(page.offerSearchFormCargoWeight)) {
+        if(map.containsKey(page.offerSearchFormCargoMaxWeight)) {
             /*
                     Might be null if the get-request came from the landing page!
              */
@@ -55,8 +52,8 @@ public class OffersSearchController {
             if(!map.get(page.offerSearchFormCargoDepth).equals("")) {
                 offerConfig.setDepth(Double.parseDouble(page.offerSearchFormCargoDepth));
             }
-            if(!map.get(page.offerSearchFormCargoWeight).equals("")) {
-                offerConfig.setWeight(Double.parseDouble(page.offerSearchFormCargoWeight));
+            if(!map.get(page.offerSearchFormCargoMaxWeight).equals("")) {
+                offerConfig.setWeight(Double.parseDouble(page.offerSearchFormCargoMaxWeight));
             }
         }
 
