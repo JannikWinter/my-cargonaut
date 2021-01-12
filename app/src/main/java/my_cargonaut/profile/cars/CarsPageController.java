@@ -5,7 +5,7 @@ import my_cargonaut.landing.NotFoundPage;
 import my_cargonaut.login.LoginController;
 import my_cargonaut.profile.deals.DealsPage;
 
-public class DealsPageController {
+public class CarsPageController {
     public static Handler serveDealsPage = ctx -> {
         DealsPage page = new DealsPage(ctx);
         page.render();
