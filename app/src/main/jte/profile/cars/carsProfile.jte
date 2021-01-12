@@ -1,6 +1,9 @@
+@import my_cargonaut.Page
 @import my_cargonaut.profile.deals.DealsPage;
 @import my_cargonaut.profile.edit.EditPage;
-@import my_cargonaut.profile.cars.CarsPage;
+@import my_cargonaut.profile.cars.CarsPage
+@import my_cargonaut.utility.data_classes.Vehicle
+@import my_cargonaut.utility.data_classes.user.CarManufacturer;
 
 @param my_cargonaut.profile.cars.CarsPage page
 
@@ -28,7 +31,8 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <label for="${CarsPage.ProfileCBrand}">Marke</label>
-                                            <select class="form-control" name="${CarsPage.ProfileCBrand}" id="${CarsPage.ProfileCBrand}">
+                                            <select class="form-control" name="${CarsPage.ProfileCBrand}" id="${CarsPage.ProfileCBrand}" >
+                                                <option selected disabled hidden>${page.getVehicle().map(vehicle -> vehicle.getBrand().toString()).orElse(CarManufacturer.Dacia.toString())}</option>
                                                 <option>Alfa-Romeo</option>
                                                 <option>AMG</option>
                                                 <option>Aston-Martin</option>
@@ -96,20 +100,20 @@
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="form-group">
-                                                                <label for="${CarsPage.ProfileCFreeHeight}">Höhe (cm)</label>
-                                                                <input class="form-control" name="${CarsPage.ProfileCFreeHeight}" id="${CarsPage.ProfileCFreeHeight}">
+                                                                <label for="${CarsPage.ProfileCFreeHeight}">Hoehe (cm)</label>
+                                                                <input value="${""+page.getVehicle().map(vehicle ->vehicle.getCurrentCargoHold().getHeight())}" type="text" class="form-control" name="${CarsPage.ProfileCFreeHeight}" id="${CarsPage.ProfileCFreeHeight}">
                                                             </div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label for="${CarsPage.ProfileCFreeWidth}">Breite (cm)</label>
-                                                                <input class="form-control" name="${CarsPage.ProfileCFreeWidth}" id="${CarsPage.ProfileCFreeWidth}">
+                                                                <input value="${""+page.getVehicle().map(vehicle -> vehicle.getCurrentCargoHold().getWidth())}" type="text" class="form-control" name="${CarsPage.ProfileCFreeWidth}" id="${CarsPage.ProfileCFreeWidth}">
                                                             </div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label for="${CarsPage.ProfileCFreeDepth}">Tiefe (cm)</label>
-                                                                <input class="form-control" id="${CarsPage.ProfileCFreeDepth}" name="${CarsPage.ProfileCFreeDepth}">
+                                                                <input value="${""+page.getVehicle().map(vehicle -> vehicle.getCurrentCargoHold().getDepth())}" type="text" class="form-control" id="${CarsPage.ProfileCFreeDepth}" name="${CarsPage.ProfileCFreeDepth}">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -132,7 +136,7 @@
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="form-group">
-                                                            <label for="${CarsPage.ProfileCMaxHeight}">Höhe (cm)</label>
+                                                            <label for="${CarsPage.ProfileCMaxHeight}">Hoehe (cm)</label>
                                                             <input class="form-control" name="${CarsPage.ProfileCMaxHeight}" id="${CarsPage.ProfileCMaxHeight}">
                                                         </div>
                                                     </div>
