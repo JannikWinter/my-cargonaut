@@ -1,5 +1,5 @@
 package my_cargonaut.utility.data_classes.user;
-
+//TODO Delete?
 public class UserPassword implements java.io.Serializable {
     private String pw;
 
@@ -9,10 +9,6 @@ public class UserPassword implements java.io.Serializable {
 
     public String getPw() {
         return pw;
-    }
-
-    public void setPw() {
-        this.pw = pw;
     }
 
     @Override
