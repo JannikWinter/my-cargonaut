@@ -8,7 +8,7 @@ import my_cargonaut.utility.data_classes.user.User;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class OfferPool {
+public class OfferPool implements java.io.Serializable {
 
     private static OfferPool instance;
 

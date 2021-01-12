@@ -1,6 +1,6 @@
 package my_cargonaut.utility.data_classes;
 
-public class Measurements extends Size {
+public class Measurements extends Size implements java.io.Serializable {
 
     private double weight;
 

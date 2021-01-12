@@ -19,9 +19,11 @@ import my_cargonaut.offer.search.OffersSearchController;
 import my_cargonaut.offer.search.OffersSearchPage;
 import my_cargonaut.registration.RegistrationController;
 import my_cargonaut.registration.RegistrationPage;
+import my_cargonaut.utility.Storage;
 import my_cargonaut.utility.data_classes.user.User;
 import my_cargonaut.utility.data_classes.user.UserRegister;
 
+import java.io.IOException;
 import java.nio.file.Path;
 
 import static io.javalin.apibuilder.ApiBuilder.before;
@@ -37,6 +39,12 @@ public class App {
 
         User testUser = new User("test", "test");
         userMap.addNewUser(testUser);
+
+        try {
+            Storage.saveData();
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
 
         Javalin app = Javalin.create(App::configure).start(7777);
 

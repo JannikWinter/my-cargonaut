@@ -7,7 +7,7 @@ import my_cargonaut.utility.data_classes.Vehicle;
 
 import java.util.Optional;
 
-public class Offer {
+public class Offer implements java.io.Serializable {
 
     // use userid here instead?
     private User user;

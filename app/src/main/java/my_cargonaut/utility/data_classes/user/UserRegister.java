@@ -5,7 +5,7 @@ package my_cargonaut.utility.data_classes.user;
 import java.util.HashMap;
 import java.util.Optional;
 
-public class UserRegister {
+public class UserRegister implements java.io.Serializable {
 
     private static UserRegister instance;
 

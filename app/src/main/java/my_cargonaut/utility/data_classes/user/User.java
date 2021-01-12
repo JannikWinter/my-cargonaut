@@ -1,6 +1,6 @@
 package my_cargonaut.utility.data_classes.user;
 
-public class User {
+public class User implements java.io.Serializable {
 
     private final String username;
     private UserPassword pw;

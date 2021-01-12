@@ -1,6 +1,6 @@
 package my_cargonaut.utility.data_classes;
 
-public class Size {
+public class Size implements java.io.Serializable {
 
     protected double height;
     protected double width;

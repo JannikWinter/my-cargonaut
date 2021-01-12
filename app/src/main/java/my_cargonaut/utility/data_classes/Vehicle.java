@@ -1,6 +1,6 @@
 package my_cargonaut.utility.data_classes;
 
-public class Vehicle {
+public class Vehicle implements java.io.Serializable {
 
     private String nickname;
     private String type;

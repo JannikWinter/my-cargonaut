@@ -4,7 +4,7 @@ package my_cargonaut.utility.data_classes;
 import java.util.Date;
 import java.util.Optional;
 
-public class Tour {
+public class Tour implements java.io.Serializable {
 
     private Location startLoc;
     private Location endLoc;

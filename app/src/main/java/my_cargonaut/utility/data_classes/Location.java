@@ -1,6 +1,6 @@
 package my_cargonaut.utility.data_classes;
 
-public class Location {
+public class Location implements java.io.Serializable {
 
     private final double lon, lat;
     private final String locationName;
