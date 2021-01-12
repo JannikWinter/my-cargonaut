@@ -161,7 +161,7 @@
             @for(var el : ForSupport.of(page.getOfferList()))
             <tr>
                 <th scope="row">${el.getIndex()}</th>
-                <td><a href="#">${"" + el.g}</a></td>
+                <td><a href="#">${}</a></td>
                 <td>START</td>
                 <td>ENDE</td>
                 <td>01.01.1970</td>
