@@ -24,7 +24,9 @@ import my_cargonaut.utility.data_classes.user.User;
 import my_cargonaut.utility.data_classes.user.UserRegister;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import static io.javalin.apibuilder.ApiBuilder.before;
 import static io.javalin.apibuilder.ApiBuilder.get;
@@ -33,20 +35,23 @@ import static io.javalin.apibuilder.ApiBuilder.post;
 public class App {
 
     public static final boolean devSystem = System.getProperty("environment") == null;
-    public static final UserRegister userMap = UserRegister.getInstance();
+    //public static final UserRegister userMap = UserRegister.getInstance();
 
     public static void main(String[] args) {
 
-        User testUser = new User("test", "test");
-        userMap.addNewUser(testUser);
+        Javalin app = Javalin.create(App::configure);
+        app.events(event -> {
+            // TODO: Save the registered Users in the file/database?
+            event.serverStopping(Storage::saveData);
+            // TODO: Load the registered users from file
+            event.serverStarting(() -> {
+                if(Files.exists(Path.of(Storage.userRegisterLoc)) && Files.exists(Path.of(Storage.offerPoolLoc))) {
+                    Storage.initializeData();
+                }
+            });
+        });
 
-        try {
-            Storage.saveData();
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
-
-        Javalin app = Javalin.create(App::configure).start(7777);
+        Runtime.getRuntime().addShutdownHook(new Thread(app::stop));
 
         app.routes(() -> {
             // Landing page
@@ -67,24 +72,13 @@ public class App {
 
             app.error(404, LandingController.serveNotFoundPage);
         });
+        app.start(7777);
     }
 
     private static void configure(JavalinConfig config) {
         JavalinJte.configure(createTemplateEngine());
         config.addStaticFiles("/public");
         config.registerPlugin(new RouteOverviewPlugin("/routes"));
-    }
-
-    public static void defineEvents(Javalin app) {
-        app.events(event -> {
-            event.serverStopping(() -> {
-                // TODO: Save the registered Users in the file/database?
-
-            });
-            event.serverStarting(() -> {
-                // TODO: Load the registered users from file
-            });
-        });
     }
 
     private static TemplateEngine createTemplateEngine() {

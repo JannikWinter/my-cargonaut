@@ -3,15 +3,12 @@ package my_cargonaut.utility;
 import my_cargonaut.utility.data_classes.offers.OfferPool;
 import my_cargonaut.utility.data_classes.user.UserRegister;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 public class Storage {
 
-    private static final String userRegisterLoc = "data/userRegister.ser";
-    private static final String offerPoolLoc = "data/offerPool.ser";
+    public static final String userRegisterLoc = "data/userRegister.ser";
+    public static final String offerPoolLoc = "data/offerPool.ser";
 
     public static void saveData() throws IOException {
         try {
@@ -25,14 +22,20 @@ public class Storage {
         }
     }
 
-    public static void initializeData() {
+    public static void initializeData() throws IOException, ClassNotFoundException {
         UserRegister userRegister = UserRegister.getInstance();
         OfferPool offerPool = OfferPool.getInstance();
 
-        UserRegister tmpUserRegister;
-        OfferPool tmpOfferPool;
 
+        UserRegister tmpUserRegister = (UserRegister) readFile(userRegisterLoc);
+        OfferPool tmpOfferPool = (OfferPool) readFile(offerPoolLoc);
 
+        tmpOfferPool.filterOffers(tmpOfferPool.getOfferFilter()).forEach(offer -> {
+            userRegister.addNewUser(offer.getUser());
+            offerPool.addOffer(offer);
+        });
+
+        tmpUserRegister.getUsers().forEach(userRegister::addNewUser);
     }
 
     private static void writeFile(String filename, Object obj) throws IOException {
@@ -41,5 +44,15 @@ public class Storage {
         out.writeObject(obj);
         out.close();
         fileOut.close();
+    }
+
+    private static Object readFile(String filename) throws IOException, ClassNotFoundException {
+        Object o;
+        FileInputStream fileIn = new FileInputStream(filename);
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        o = in.readObject();
+        in.close();
+        fileIn.close();
+        return o;
     }
 }
