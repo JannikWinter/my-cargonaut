@@ -72,7 +72,7 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item px-2">
                             <!--- the get() is intended without check! -->
-                            <a href="${CarsPage.getDynamicPath(page.getCurrentUser().get().getUsername())}" class="btn btn-info text-white" role="button">
+                            <a href="${EditPage.getDynamicPath(page.getCurrentUser().get().getUsername())}" class="btn btn-info text-white" role="button">
                                 <i class="fa fa-user"></i> Mein Profil</a>
                         </li>
                          <li class="nav-item px-2">

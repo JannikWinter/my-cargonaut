@@ -19,7 +19,7 @@ public class LoginController {
 
     public static Handler handleLogout = ctx -> {
         //ctx.sessionAttribute(sessionAttributeLoggedInUsername, null);
-        ctx.sessionAttributeMap().remove(sessionAttributeLoggedInUsername);
+        SessionManUtils.removeSessionAttribute(ctx, sessionAttributeLoggedInUsername);
         //TODO: Maybe use ctx.path() here? So a user would be redirected to the page they were on
         ctx.redirect(LandingPage.PATH);
     };

@@ -15,7 +15,7 @@ public abstract class Page {
 
     protected final Context ctx;
     protected boolean hideNavBarNavigation;
-    protected boolean isNotAccessRestricted;
+    protected boolean pageIsNotAccessRestricted;
 
     private String currentUserName;
     private User currentUser;
@@ -30,7 +30,7 @@ public abstract class Page {
         this.wasAuthorizationAttempted = false;
         this.hasAuthorizationSucceeded = false;
         this.hideNavBarNavigation = false;
-        this.isNotAccessRestricted = true;
+        this.pageIsNotAccessRestricted = true;
 
         SessionManUtils.getUserInSession(ctx).ifPresentOrElse(user -> {
             this.currentUserName = user.getUsername();
@@ -106,7 +106,7 @@ public abstract class Page {
     }
 
     public boolean hasAccess() {
-        return this.isNotAccessRestricted || isUserLoggedIn();
+        return this.pageIsNotAccessRestricted || isUserLoggedIn();
     }
 
     public void render() {

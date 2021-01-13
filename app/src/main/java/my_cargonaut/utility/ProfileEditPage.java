@@ -9,5 +9,6 @@ public abstract class ProfileEditPage extends Page {
 
     public ProfileEditPage(Context ctx){
         super(ctx);
+        pageIsNotAccessRestricted = false;
     }
 }
