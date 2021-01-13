@@ -1,11 +1,8 @@
-package my_cargonaut.user;
+package my_cargonaut.utility.data_classes.user;
 
+import java.util.*;
 
-
-import java.util.HashMap;
-import java.util.Optional;
-
-public class UserRegister {
+public class UserRegister implements java.io.Serializable {
 
     private static UserRegister instance;
 
@@ -19,11 +16,15 @@ public class UserRegister {
         if(UserRegister.instance == null) {
             UserRegister.instance = new UserRegister();
         }
-        return instance;
+        return UserRegister.instance;
     }
 
     public Optional<User> getUser(String username) {
         return Optional.ofNullable(registeredUsers.get(username));
+    }
+
+    public Collection<User> getUsers() {
+        return registeredUsers.values();
     }
 
     public boolean addNewUser(User user) {

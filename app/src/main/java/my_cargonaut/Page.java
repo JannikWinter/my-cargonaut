@@ -1,7 +1,8 @@
 package my_cargonaut;
 
 import io.javalin.http.Context;
-import my_cargonaut.registration.RegistrationController;
+import my_cargonaut.utility.SessionManUtils;
+import my_cargonaut.utility.data_classes.user.User;
 
 import java.util.Collections;
 import java.util.Optional;
@@ -10,10 +11,14 @@ import static my_cargonaut.utility.SessionManUtils.*;
 
 public abstract class Page {
 
+    public static final String ERROR_PATH = "404error";
+
     protected final Context ctx;
     protected boolean hideNavBarNavigation;
+    protected boolean pageIsNotAccessRestricted;
 
-    private String currentUser;
+    private String currentUserName;
+    private User currentUser;
     private boolean wasAuthorizationAttempted;
     private boolean hasAuthorizationSucceeded;
     private String loginErrorMsg;
@@ -24,8 +29,16 @@ public abstract class Page {
         this.ctx = ctx;
         this.wasAuthorizationAttempted = false;
         this.hasAuthorizationSucceeded = false;
-        this.currentUser = ctx.sessionAttribute(sessionAttributeLoggedInUsername);
         this.hideNavBarNavigation = false;
+        this.pageIsNotAccessRestricted = true;
+
+        SessionManUtils.getUserInSession(ctx).ifPresentOrElse(user -> {
+            this.currentUserName = user.getUsername();
+            this.currentUser = user;
+        }, () -> {
+            this.currentUserName = null;
+            this.currentUser = null;
+        });
         /*
         // TODO: Delete if registration works as intended
         Optional<String> tmp = Optional.ofNullable(ctx.sessionAttribute(sessionAttributeRegisteredUserName));
@@ -41,12 +54,14 @@ public abstract class Page {
 
     public abstract String getTemplate();
 
-    public Optional<String> getCurrentUser() {
-        return Optional.ofNullable(currentUser);
+    public Optional<String> getCurrentUserName() {
+        return Optional.ofNullable(currentUserName);
     }
 
+    public Optional<User> getCurrentUser() { return Optional.ofNullable(currentUser); }
+
     public void updateLoggedInUser() {
-        this.currentUser = ctx.sessionAttribute(sessionAttributeLoggedInUsername);
+        this.currentUserName = ctx.sessionAttribute(sessionAttributeLoggedInUsername);
     }
 
     /*
@@ -56,12 +71,13 @@ public abstract class Page {
      */
 
     public boolean isUserLoggedIn() {
-        return getCurrentUser().isPresent();
+        return getCurrentUserName().isPresent();
     }
 
-    public Page markAuthentificationSuccess() {
+    public Page markAuthentificationSuccess(User user) {
         this.wasAuthorizationAttempted = true;
         this.hasAuthorizationSucceeded = true;
+        this.currentUser = user;
         updateLoggedInUser();
         return this;
     }
@@ -87,6 +103,10 @@ public abstract class Page {
 
     public boolean hideNavBarNavigation() {
         return this.hideNavBarNavigation;
+    }
+
+    public boolean hasAccess() {
+        return this.pageIsNotAccessRestricted || isUserLoggedIn();
     }
 
     public void render() {
