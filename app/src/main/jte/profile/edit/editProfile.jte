@@ -111,7 +111,7 @@
 
                                                                        </div>
                                                                    </div>
-                                                                   <button type="button" class="btn btn-primary mb-2 ml-2">Änderungen speichern</button>
+                                                                   <button type="submit" class="btn btn-primary mb-2 ml-2">Änderungen speichern</button>
                                                                </div>
                                                            </div>
                             </form>

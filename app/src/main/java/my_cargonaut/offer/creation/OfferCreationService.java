@@ -77,6 +77,8 @@ public class OfferCreationService {
             } else {
                 tour = new Tour(startLoc, endLoc, startTime, estEndTime);
             }
+            setVehicle(vehicle == null ? user.getVehicle() : vehicle);
+
             offer = new Offer(user, tour, measurements, vehicle);
             addNewOffer(offer);
         }

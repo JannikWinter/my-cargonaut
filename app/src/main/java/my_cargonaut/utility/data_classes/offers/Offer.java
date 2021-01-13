@@ -9,17 +9,24 @@ import java.util.Optional;
 
 public class Offer implements java.io.Serializable {
 
+    private static long numberOfOffers = 0L;
+
     // use userid here instead?
     private User user;
     private Tour tour;
+    private long offerID;
     private Measurements freeSpace;
     private Vehicle vic;
+
+    public User offerAcceptor;
 
     public Offer(User user, Tour tour, Measurements freeSpace, Vehicle vehicle) {
         this.user = user;
         this.tour = tour;
+        this.offerID = numberOfOffers++;
         this.freeSpace = freeSpace;
         this.vic = vehicle;
+        this.offerAcceptor = null;
     }
 
     public User getUser() {
@@ -36,5 +43,22 @@ public class Offer implements java.io.Serializable {
 
     public Optional<Measurements> getFreeSpace() {
         return Optional.ofNullable(freeSpace);
+    }
+
+    public Optional<User> getOfferAcceptor() {
+        return Optional.ofNullable(offerAcceptor);
+    }
+
+    public long getOfferID() {
+        return this.offerID;
+    }
+
+    public boolean hasOfferAcceptor() {
+        return getOfferAcceptor().isPresent();
+    }
+
+    public Offer setOfferAcceptor(User user) {
+        this.offerAcceptor = user;
+        return this;
     }
 }
