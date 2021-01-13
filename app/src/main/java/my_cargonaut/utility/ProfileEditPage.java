@@ -5,9 +5,7 @@ import my_cargonaut.Page;
 
 public abstract class ProfileEditPage extends Page {
 
-    protected static final String BASEPATH = "user/:username/editProfile";
-
-    protected final String editProfileBasePath = "user/%s/editProfile/".formatted(getCurrentUserName().orElse("404error"));
+    protected static final String BASEPATH = "/user/:username/editProfile";
 
     public ProfileEditPage(Context ctx){
         super(ctx);
