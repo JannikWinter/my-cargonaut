@@ -101,25 +101,25 @@
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label for="${CarsPage.ProfileCFreeHeight}">Hoehe (cm)</label>
-                                                                <input value="${""+page.getVehicle().map(vehicle ->vehicle.getCurrentCargoHold().getHeight())}" type="text" class="form-control" name="${CarsPage.ProfileCFreeHeight}" id="${CarsPage.ProfileCFreeHeight}">
+                                                                <input value="${"" + page.getVehicle().map(vehicle -> vehicle.getCurrentCargoHold().getHeight()).orElse(0.0)}" type="number" class="form-control" name="${CarsPage.ProfileCFreeHeight}" id="${CarsPage.ProfileCFreeHeight}">
                                                             </div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label for="${CarsPage.ProfileCFreeWidth}">Breite (cm)</label>
-                                                                <input value="${""+page.getVehicle().map(vehicle -> vehicle.getCurrentCargoHold().getWidth())}" type="text" class="form-control" name="${CarsPage.ProfileCFreeWidth}" id="${CarsPage.ProfileCFreeWidth}">
+                                                                <input value="${"" + page.getVehicle().map(vehicle -> vehicle.getCurrentCargoHold().getWidth()).orElse(0.0)}" type="number" class="form-control" name="${CarsPage.ProfileCFreeWidth}" id="${CarsPage.ProfileCFreeWidth}">
                                                             </div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="form-group">
                                                                 <label for="${CarsPage.ProfileCFreeDepth}">Tiefe (cm)</label>
-                                                                <input value="${""+page.getVehicle().map(vehicle -> vehicle.getCurrentCargoHold().getDepth())}" type="text" class="form-control" id="${CarsPage.ProfileCFreeDepth}" name="${CarsPage.ProfileCFreeDepth}">
+                                                                <input value="${"" + page.getVehicle().map(vehicle -> vehicle.getCurrentCargoHold().getDepth()).orElse(0.0)}" type="number" class="form-control" id="${CarsPage.ProfileCFreeDepth}" name="${CarsPage.ProfileCFreeDepth}">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="${CarsPage.ProfileCFreeWeight}">Gewicht (kg)</label>
-                                                        <input class="form-control" name="${CarsPage.ProfileCFreeWeight}" id="${CarsPage.ProfileCFreeWeight}">
+                                                        <input value="${"" + page.getVehicle().map(vehicle -> vehicle.getCurrentCargoHold().getWeight()).orElse(0.0)}" type="number" class="form-control" name="${CarsPage.ProfileCFreeWeight}" id="${CarsPage.ProfileCFreeWeight}">
                                                     </div>
                                                 </div>
                                         </div>
