@@ -25,7 +25,7 @@ public class CarsPageController {
     public static Handler handleCarsPagePost = ctx -> {
         CarsPage page = new CarsPage(ctx);
         Map<String, String> map = FormManUtils.createFormParamMap(ctx);
-        User currentUser = SessionManUtils.getUserInSession(ctx).orElseThrow(IllegalStateException::new);
+        User currentUser = page.getCurrentUser().orElseThrow(IllegalStateException::new);
         Vehicle inputVehicle = new Vehicle();
 
         inputVehicle.setCarInformation(

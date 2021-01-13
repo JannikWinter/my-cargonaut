@@ -27,7 +27,7 @@ public class OfferCreationPage extends Page {
 
     public OfferCreationPage(Context ctx) {
         super(ctx);
-        isNotAccessRestricted = false;
+        pageIsNotAccessRestricted = false;
         wasOfferCreationAttempted = false;
         hasOfferCreationSucceeded = false;
         templateFilePath = "offer/creation/createOffer.jte";

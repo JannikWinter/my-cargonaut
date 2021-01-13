@@ -19,6 +19,10 @@ import my_cargonaut.offer.search.OffersSearchController;
 import my_cargonaut.offer.search.OffersSearchPage;
 import my_cargonaut.profile.cars.CarsPage;
 import my_cargonaut.profile.cars.CarsPageController;
+import my_cargonaut.profile.deals.DealsPage;
+import my_cargonaut.profile.deals.DealsPageController;
+import my_cargonaut.profile.edit.EditPage;
+import my_cargonaut.profile.edit.EditProfileController;
 import my_cargonaut.registration.RegistrationController;
 import my_cargonaut.registration.RegistrationPage;
 import my_cargonaut.utility.Storage;
@@ -67,9 +71,15 @@ public class App {
             // Offer creation
             get(OfferCreationPage.PATH, OfferCreationController.serveOfferCreationPage);
             post(OfferCreationPage.PATH, OfferCreationController.handleOfferCreationPost);
+            // Edit profile page
+            get(EditPage.PATH_STATIC, EditProfileController.serveEditProfilePage);
+            post(EditPage.PATH_STATIC, EditProfileController.handleEditprofilePagePost);
             // Edit vehicle page
             get(CarsPage.PATH_STATIC, CarsPageController.serveCarsPage);
             post(CarsPage.PATH_STATIC, CarsPageController.handleCarsPagePost);
+            // Show own offers page
+            get(DealsPage.PATH_STATIC, DealsPageController.serveDealsPage);
+            post(DealsPage.PATH_STATIC, DealsPageController.handleDealsPagePost);
 
             app.error(404, LandingController.serveNotFoundPage);
         });

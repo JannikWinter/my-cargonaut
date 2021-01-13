@@ -7,7 +7,7 @@ import my_cargonaut.utility.data_classes.Vehicle;
 import java.util.Optional;
 
 public class CarsPage extends ProfileEditPage {
-    private static final String PATH_ENDING = "/carsProfile";
+    private static final String PATH_ENDING = "/cars";
     public static final String PATH_STATIC = BASEPATH + PATH_ENDING;
 
     private final String templateFilePath;

@@ -44,16 +44,16 @@ public class OffersSearchController {
                     Might be null if the get-request came from the landing page!
              */
             if(!map.get(page.offerSearchFormCargoHeight).equals("")) {
-                offerConfig.setHeight(Double.parseDouble(page.offerSearchFormCargoHeight));
+                offerConfig.setHeight(Double.parseDouble(map.get(page.offerSearchFormCargoHeight)));
             }
             if(!map.get(page.offerSearchFormCargoWidth).equals("")) {
-                offerConfig.setWidth(Double.parseDouble(page.offerSearchFormCargoWidth));
+                offerConfig.setWidth(Double.parseDouble(map.get(page.offerSearchFormCargoWidth)));
             }
             if(!map.get(page.offerSearchFormCargoDepth).equals("")) {
-                offerConfig.setDepth(Double.parseDouble(page.offerSearchFormCargoDepth));
+                offerConfig.setDepth(Double.parseDouble(map.get(page.offerSearchFormCargoDepth)));
             }
             if(!map.get(page.offerSearchFormCargoMaxWeight).equals("")) {
-                offerConfig.setWeight(Double.parseDouble(page.offerSearchFormCargoMaxWeight));
+                offerConfig.setWeight(Double.parseDouble(map.get(page.offerSearchFormCargoMaxWeight)));
             }
         }
 

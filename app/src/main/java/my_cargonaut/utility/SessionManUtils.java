@@ -18,7 +18,8 @@ public class SessionManUtils {
     }
 
     public static Context removeSessionAttribute(Context ctx, String attributeName) {
-        ctx.sessionAttributeMap().remove(attributeName);
+        ctx.sessionAttribute(attributeName, null);
+        //ctx.sessionAttributeMap().remove(attributeName);
         return ctx;
     }
 
