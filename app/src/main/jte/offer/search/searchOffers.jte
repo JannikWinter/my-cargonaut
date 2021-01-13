@@ -166,6 +166,7 @@
         </tbody>
         @endif
     </table>
+
 </div>
 
 `)

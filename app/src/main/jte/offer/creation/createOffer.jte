@@ -27,7 +27,7 @@
                 <nav class="flex-column" style="text-align: center">
                     <h4 class="mt-2">Erstellen</h4>
                     <br>
-                    <form class="form was-validated" role="form" name="${OfferCreationPage.offerCForm}" method="post" action="${OfferCreationPage.PATH}">
+                    <form class="form" role="form" name="${OfferCreationPage.offerCForm}" method="post" action="${OfferCreationPage.PATH}">
                     <div class="col form-group">
                         <select class="form-control" id="createDropdown">
                             <option>Angebot</option>
@@ -44,19 +44,20 @@
                     <div class="col form-group">
                         <input name="${OfferCreationPage.offerCFormStartTime}" type="datetime-local" class="form-control" id="${OfferCreationPage.offerCFormStartTime}" required>
                     </div>
-                    <div class="col form-group">
-                        <input name="${OfferCreationPage.offerCFormWeight}" type="text" class="form-control" id="${OfferCreationPage.offerCFormWeight}" placeholder="Gewicht">
-                    </div>
+
                     <div class="col form-group">
                         <div class="row">
                             <div class="col form-group">
-                                <input name="${OfferCreationPage.offerCFormHeight}" type="text" class="form-control" id="${OfferCreationPage.offerCFormHeight}" placeholder="Hoehe">
+                                <input name="${OfferCreationPage.offerCFormHeight}" type="text" class="form-control" id="${OfferCreationPage.offerCFormHeight}" placeholder="Hoehe" required>
                             </div>
                             <div class="col form-group">
-                                <input name="${OfferCreationPage.offerCFormLength}" type="text" class="form-control" id="${OfferCreationPage.offerCFormLength}" placeholder="Breite">
+                                <input name="${OfferCreationPage.offerCFormLength}" type="text" class="form-control" id="${OfferCreationPage.offerCFormLength}" placeholder="Breite" required>
                             </div>
                             <div class="col form-group">
-                                <input name="${OfferCreationPage.offerCFormDepth}" type="text" class="form-control" id="${OfferCreationPage.offerCFormDepth}" placeholder="Tiefe">
+                                <input name="${OfferCreationPage.offerCFormDepth}" type="text" class="form-control" id="${OfferCreationPage.offerCFormDepth}" placeholder="Tiefe" required>
+                            </div>
+                            <div class="col form-group">
+                                <input name="${OfferCreationPage.offerCFormWeight}" type="text" class="form-control" id="${OfferCreationPage.offerCFormWeight}" placeholder="Gewicht" required>
                             </div>
                         </div>
                     </div>

@@ -23,7 +23,7 @@ public class OfferCreationController {
 
         Optional<User> currentlyLoggedInUser = SessionManUtils.getUserInSession(ctx);
         try {
-            if(currentlyLoggedInUser.isEmpty()) {
+            if (currentlyLoggedInUser.isEmpty()) {
                 // should not happen: Creation of offer while not logged in
                 page = new OfferCreationPage(ctx);
                 page.markOfferCreationFailure("Ein nicht angemeldeter Nutzer kann keine Angebote erstellen").render();
@@ -46,13 +46,16 @@ public class OfferCreationController {
 
             page = new OfferCreationPage(ctx);
             page.markOfferCreationSuccess().render();
-        } catch (Exception e) {
+        } catch(Exception e) {
             /*
              *      !!! SHOULD NOT HAPPEN !!!
              *      IllegalStateException MAY be thrown by offerBuilder.createOffer();
              *      ParseException may be thrown if the Date-Format is wrong
              */
             page = new OfferCreationPage(ctx);
+            if(e instanceof NumberFormatException) {
+                page.markOfferCreationFailure("Alle Felder muessen ausgefuellt sein.").render();
+            }
             page.markOfferCreationFailure(e.getMessage()).render();
         }
     };
