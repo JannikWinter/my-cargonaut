@@ -94,6 +94,7 @@
                                                                            <!-- TODO These-->
                                                                            <div class="col form-group">
                                                                                <label for="emailInput">E-Mail</label>
+                                                                               <!-- Breaks IMMEDIATELY if you break open the lambdas -->
                                                                                <input type="email" class="form-control" id="emailInput" disabled value="${page.getCurrentUser().map(user -> user.getUsername()).orElse()}">
                                                                            </div>
                                                                            <div class="col form-group">
