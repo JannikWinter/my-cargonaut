@@ -134,7 +134,7 @@
                 <th scope="col" colspan="4" class="text-center">Stauraum</th>
             </tr>
             <tr class="table-primary">
-                <th scope="col">Höhe(cm)</th>
+                <th scope="col">Hoehe(cm)</th>
                 <th scope="col">Breite(cm)</th>
                 <th scope="col">Tiefe(cm)</th>
                 <th scope="col">Maximalgewicht(kg)</th>
@@ -143,18 +143,7 @@
 
         @if(page.displaysQueryResult())
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td><a href="#">USERS's Tour von START nach ENDE</a></td>
-                <td>START</td>
-                <td>ENDE</td>
-                <td>01.01.1970</td>
-                <td>00:00</td>
-                <td>100</td>
-                <td>100</td>
-                <td>100</td>
-                <td>100</td>
-            </tr>
+
             @for(var el : ForSupport.of(page.getOfferList()))
             <tr>
                 <th scope="row">${el.getIndex()}</th>

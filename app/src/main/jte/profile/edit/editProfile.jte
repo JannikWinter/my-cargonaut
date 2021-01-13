@@ -100,18 +100,18 @@
                                                                            </div>
                                                                            <!-- TODO These-->
                                                                            <div class="col form-group">
-                                                                               <label for="emailInput">E-Mail</label>
+                                                                               <label for="emailInput">Benutzername</label>
                                                                                <!-- Breaks IMMEDIATELY if you break open the lambdas -->
                                                                                <input type="email" class="form-control" id="emailInput" disabled value="${page.getCurrentUser().map(user -> user.getUsername()).orElseThrow(IllegalStateException::new)}">
                                                                            </div>
                                                                            <div class="col form-group">
                                                                                <label for="passwordInput">Passwort</label>
-                                                                               <input type="password" class="form-control" id="passwordInput" disabled value="${page.getCurrentUser().map(user -> user.getPassword().getPw()).orElseThrow(IllegalStateException::new)}">
+                                                                               <input type="text" class="form-control" id="passwordInput" disabled value="${page.getCurrentUser().map(user -> user.getPassword().getPw()).orElseThrow(IllegalStateException::new)}">
                                                                            </div>
 
                                                                        </div>
                                                                    </div>
-                                                                   <button type="button" class="btn btn-primary mb-2 ml-2">Änderungen speichern</button>
+                                                                   <button type="button" class="btn btn-primary mb-2 ml-2">Aenderungen speichern</button>
                                                                </div>
                                                            </div>
                             </form>
