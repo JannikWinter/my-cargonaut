@@ -73,6 +73,7 @@ public class App {
             post(OfferCreationPage.PATH, OfferCreationController.handleOfferCreationPost);
             // Edit vehicle page
             get(CarsPage.PATH, CarsPageController.serveCarsPage);
+            post(CarsPage.PATH, CarsPageController.handleCarsPagePost);
 
             app.error(404, LandingController.serveNotFoundPage);
         });
