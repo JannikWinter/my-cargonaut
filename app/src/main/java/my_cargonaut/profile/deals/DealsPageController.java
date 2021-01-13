@@ -33,7 +33,7 @@ public class DealsPageController {
         DealsPage page = new DealsPage(ctx);
 
         Map<String, String> map = FormManUtils.createFormParamMap(ctx);
-        Offer changedOffer = OffersSearchService.getInstance().getOfferFilterConfigurator()
+        //Offer changedOffer = OffersSearchService.getInstance().getOfferFilterConfigurator();
         if(!map.get(page.dealsPageFormAcceptionUser).equals("")) {
             Optional<User> maybeAcceptingUser = UserRegister.getInstance().getUser(map.get(page.dealsPageFormAcceptionUser));
 

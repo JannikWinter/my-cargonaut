@@ -51,7 +51,7 @@
                                 <td>${el.get().getRoute().getStartLoc().getLocationName()}</td>
                                 <td>${el.get().getRoute().getEndLoc().getLocationName()}</td>
                                 <td>${new SimpleDateFormat("dd. MM. yyyy").format(el.get().getRoute().getStartTime())}</td>
-                                <td>${el.get().getVehicle().map(vic -> vic.getBrand().toString() + " "+ vic.getModel())}</td>
+                                <td>${el.get().getVehicle().map(vic -> "" + vic.getBrand().toString() + " " + vic.getModel()).orElseThrow(IllegalStateException::new)}</td>
                                 @if(el.get().hasOfferAcceptor())
                                 <td>
                                     <input disabled type="text" name="${page.dealsPageFormAcceptionUser}" class="form-control"

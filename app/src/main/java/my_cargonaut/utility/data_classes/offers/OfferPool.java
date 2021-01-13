@@ -97,6 +97,7 @@ public class OfferPool implements java.io.Serializable {
 
         private OfferFilter() {
             measurements = new HashMap<>();
+            offerID = -1L;
         }
 
         public void setMeasurementsMap(Map<String, Double> measMap) {

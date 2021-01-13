@@ -131,7 +131,8 @@ public class OffersSearchService {
         }
 
         public OfferFilterConfigurator setOfferId(long id) {
-            this.offerFilter.
+            this.offerFilter.offerID = id;
+            return this;
         }
     }
 }
