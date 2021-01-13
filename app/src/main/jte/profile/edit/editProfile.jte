@@ -22,7 +22,7 @@
                        </div>
                        <!-- Right-sided content -> Edit-Profile -->
                        <div class="col-lg-10 col-md-12">
-                            <form class="form text-body" role="form" name="${EditPage.ProfileEForm}" id="${EditPage.ProfileEForm}">
+                            <form class="form text-body" role="form" name="${EditPage.ProfileEForm}" id="${EditPage.ProfileEForm}" method="post" action="${EditPage.getDynamicPath(page.getCurrentUserName().get())}">
                                 <div class="bg-light">
                                                                <div class="container">
                                                                    <h2>Mein Profil</h2>
@@ -52,12 +52,7 @@
                                                                                <label for="${EditPage.ProfileESurname}">Nachname</label>
                                                                                <input type="text" class="form-control" id="${EditPage.ProfileESurname}" name="${EditPage.ProfileESurname}" value="${page.getCurrentUser().map(User::getSurname).orElseThrow(IllegalStateException::new)}">
                                                                            </div>
-                                                                           <!-- Row 3 -->
-                                                                           <div class="form-group">
-                                                                               <label for="${EditPage.ProfileEDOB}">Geburtsdatum</label>
-                                                                               <!-- Watch out there: The user DOB desires a LocDate Typing. Unknown how it maps to type: date -->
-                                                                               <input class="form-control" type="date" id="${EditPage.ProfileEDOB}" name="${EditPage.ProfileEDOB}">
-                                                                           </div>
+
                                                                            <!-- Row 4 -->
                                                                            <div class="row">
                                                                                <div class="col-md-5 form-group">
@@ -98,7 +93,6 @@
                                                                            <div class="d-flex justify-content-center">
                                                                                <button class="btn btn-info"><i class="fa fa-paypal"></i> PayPal verlinken</button>
                                                                            </div>
-                                                                           <!-- TODO These-->
                                                                            <div class="col form-group">
                                                                                <label for="emailInput">Benutzername</label>
                                                                                <!-- Breaks IMMEDIATELY if you break open the lambdas -->
@@ -111,7 +105,7 @@
 
                                                                        </div>
                                                                    </div>
-                                                                   <button type="button" class="btn btn-primary mb-2 ml-2">Aenderungen speichern</button>
+                                                                   <button type="submit" class="btn btn-primary mb-2 ml-2">Aenderungen speichern</button>
                                                                </div>
                                                            </div>
                             </form>

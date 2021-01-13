@@ -28,7 +28,7 @@ public class RegistrationController {
         if(!password.equals(checkPassword)) {
             // Render registration page with info that passwords didn't match -> SHOULD NOT HAPPEN
             page = new RegistrationPage(ctx);
-            page.markRegistrationFailure(map, "Die Passwörter stimmen nicht überein");
+            page.markRegistrationFailure(map, "Die Passwoerter stimmen nicht ueberein");
             page.render();
             return;
         }
@@ -36,7 +36,7 @@ public class RegistrationController {
             if (!registrationService.register(newUsername, password, email)) {
                 // Render registration page with info that username is already taken
                 page = new RegistrationPage(ctx);
-                page.markRegistrationFailure(map, "Der gewählte Nutzername ist bereits vergeben");
+                page.markRegistrationFailure(map, "Der gewaehlte Nutzername ist bereits vergeben");
                 page.render();
             } else {
                 // Render registration page with success information
@@ -52,7 +52,7 @@ public class RegistrationController {
         } catch(IllegalArgumentException e) {
             // Render registration page with info that all fields need to be filled -> SHOULD NOT HAPPEN
             page = new RegistrationPage(ctx);
-            page.markRegistrationFailure(map, "Bitte füllen Sie alle Felder aus!");
+            page.markRegistrationFailure(map, "Bitte fuellen Sie alle Felder aus!");
             page.render();
         }
 
