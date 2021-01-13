@@ -1,6 +1,4 @@
 @import my_cargonaut.profile.edit.EditPage;
-@import my_cargonaut.profile.cars.CarsPage;
-
 @param my_cargonaut.profile.edit.EditPage page
     @layout.(page = page, content = @`
                <br>
@@ -10,7 +8,7 @@
                            <div class="bg-light">
                                <nav class="nav nav-tabs flex-column">
                                    <a class="nav-link active" href="#">Profil</a>
-                                   <a class="nav-link" href="Profile_Deals.html">Deals</a>
+                                   <a class="nav-link" href="#">Deals</a>
                                    <a class="nav-link" href="#">Fuhrpark</a>
                                </nav>
                            </div>
@@ -92,11 +90,11 @@
                                                                            </div>
                                                                            <!-- TODO These-->
                                                                            <div class="col form-group">
-                                                                               <label for="emailInput"><h6>E-Mail</h6></label>
+                                                                               <label for="emailInput">E-Mail</label>
                                                                                <input type="email" class="form-control" id="emailInput" disabled>
                                                                            </div>
                                                                            <div class="col form-group">
-                                                                               <label for="passwordInput"><h6>Passwort</h6></label>
+                                                                               <label for="passwordInput">Passwort</label>
                                                                                <input type="password" class="form-control" id="passwordInput" disabled>
                                                                            </div>
 
