@@ -21,7 +21,7 @@
                     <!-- Right-sided content -> Edit-Profile -->
 
                     <div class="col-lg-10 col-md-12">
-                        <form class="form text-body" role="form" name="${CarsPage.ProfileCForm}" id="${CarsPage.ProfileCForm}" method="post" action="${CarsPage.PATH}">
+                        <form class="form text-body" role="form" name="${CarsPage.ProfileCForm}" id="${CarsPage.ProfileCForm}" method="post" action="${CarsPage.getDynamicPath(page.getCurrentUserName().get())}"> <!-- .get() is intentional! -->
                         <div class="bg-light">
                             <div class="container">
                                 <h2 class="pt-2">Mein Fahrzeug</h2>
@@ -30,7 +30,9 @@
                                         <div class="form-group">
                                             <label for="${CarsPage.ProfileCBrand}">Marke</label>
                                             <select class="form-control" name="${CarsPage.ProfileCBrand}" id="${CarsPage.ProfileCBrand}" >
-                                                <option selected disabled hidden>${page.getVehicle().map(vehicle -> vehicle.getBrand().toString()).orElse(CarManufacturer.Dacia.toString())}</option>
+                                                <option selected hidden value="${page.getVehicle().map(vehicle -> vehicle.getBrand().toString()).orElse(CarManufacturer.Dacia.toString())}">
+                                                    ${page.getVehicle().map(vehicle -> vehicle.getBrand().toString()).orElse(CarManufacturer.Dacia.toString())}
+                                                </option>
                                                 <option>Alfa-Romeo</option>
                                                 <option>AMG</option>
                                                 <option>Aston-Martin</option>

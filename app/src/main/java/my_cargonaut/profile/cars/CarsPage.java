@@ -7,7 +7,9 @@ import my_cargonaut.utility.data_classes.Vehicle;
 import java.util.Optional;
 
 public class CarsPage extends ProfileEditPage {
-    public static final String PATH = BASEPATH + "/carsProfile";
+    private static final String PATH_ENDING = "/carsProfile";
+    public static final String PATH_STATIC = BASEPATH + PATH_ENDING;
+
     private final String templateFilePath;
 
     public static final String ProfileCForm = "carsProfile";
@@ -44,6 +46,6 @@ public class CarsPage extends ProfileEditPage {
     }
 
     public static String getDynamicPath(String username) {
-        return PATH.replace(":username", username);
+        return Optional.ofNullable(username).map(name -> PATH_STATIC.replace(":username", name)).orElse("404error");
     }
 }

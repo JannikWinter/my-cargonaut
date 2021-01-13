@@ -11,6 +11,8 @@ import static my_cargonaut.utility.SessionManUtils.*;
 
 public abstract class Page {
 
+    public static final String ERROR_PATH = "404error";
+
     protected final Context ctx;
     protected boolean hideNavBarNavigation;
     protected boolean isNotAccessRestricted;
