@@ -93,6 +93,7 @@ public class OfferPool implements java.io.Serializable {
         public Measurements freeSpace;
         private Map<String, Double> measurements;
         public Vehicle vehicle;
+        public long offerID;
 
         private OfferFilter() {
             measurements = new HashMap<>();

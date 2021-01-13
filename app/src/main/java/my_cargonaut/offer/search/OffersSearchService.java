@@ -129,5 +129,9 @@ public class OffersSearchService {
             this.offerFilter.vehicle = vic;
             return this;
         }
+
+        public OfferFilterConfigurator setOfferId(long id) {
+            this.offerFilter.
+        }
     }
 }

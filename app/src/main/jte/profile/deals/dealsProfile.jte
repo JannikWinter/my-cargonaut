@@ -67,16 +67,26 @@
                                 <td>${el.get().getVehicle().map(vic -> vic.getBrand().toString() + " "+ vic.getModel())}</td>
                                 @if(el.get().hasOfferAcceptor())
                                 <td>
-                                    <input type="text" name="${page.dealsPageFormAcceptionUser}" class="form-control"
+                                    <input disabled type="text" name="${page.dealsPageFormAcceptionUser}" class="form-control"
                                         value="${el.get().getOfferAcceptor().map(User::getUsername).orElseThrow(IllegalStateException::new)}">
+                                    <input hidden type="text" name="${page.dealsPageFormOfferID}" value="${"" + el.get().getOfferID()}">
                                 </td>
                                 <td>
-                                    <input type="text" name="">
-                                    <button type="button" class="btn btn-success">
+                                    <button type="submit" class="btn btn-success">
                                         <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                                     </button>
                                 </td>
                                 @else
+                                <td>
+                                    <input type="text" name="${page.dealsPageFormAcceptionUser}" class="form-control"
+                                        placeholder="Angebotspartner" value="${el.get().getOfferAcceptor().map(User::getUsername).orElse("")}">
+                                    <input hidden type="text" name="${page.dealsPageFormOfferID}" value="${"" + el.get().getOfferID()}">
+                                </td>
+                                <td>
+                                    <button type="submit" class="btn btn-failure">
+                                        <i class="fa fa-lock-alt" aria-hidden="true"></i>
+                                    </button>
+                                </td>
                                 @endif
                             </tr>
                             @endfor
