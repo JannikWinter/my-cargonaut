@@ -21,7 +21,7 @@
         <!-- Right-sided content -> Edit-Profile -->
         <div class="col-lg-10 col-md-12">
             <div class="bg-light">
-                <div class="container">
+                <div class="container text-body">
                     <h2>Meine Deals</h2>
                     <form class="container bg-light table-responsive pt-2" role="form" name="${page.dealsPageForm}" method="post" action="${DealsPage.getDynamicPath(page.getCurrentUser().get().getUsername())}">
                         <table class="table table-striped table-hover">
@@ -38,20 +38,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td><a href="#">USERS's Tour von START nach ENDE</a></td>
-                                <td>START</td>
-                                <td>ENDE</td>
-                                <td>01.01.1970</td>
-                                <td>Fahrzeug Name</td>
-                                <td><input type="text" name="cargonautee" class="form-control"></td>
-                                <td>
-                                    <button type="button" class="btn btn-success">
-                                        <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-                                    </button>
-                                </td>
-                            </tr>
+
                             @for(var el : ForSupport.of(page.getOfferList()))
                             <tr>
                                 <th scope="row">${el.getIndex()}</th>
@@ -90,6 +77,7 @@
                                 @endif
                             </tr>
                             @endfor
+
                             </tbody>
                         </table>
                     </form>

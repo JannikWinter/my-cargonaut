@@ -32,12 +32,7 @@
                 placeholder="Nutzernamen eintragen" class="form-control" value="${page.getEnteredUsername()}" required>
           <div class="invalid-feedback">Bitte geben Sie einen Nutzernamen an</div>
         </div>
-        <div class="form-group mt-4">
-          <label for="registerMail">E-Mail-Adresse</label>
-          <input id="registerMail" name="${RegistrationPage.regFormEmail}" type="email"
-                placeholder="E-Mail-Adresse eintragen" class="form-control" value="${page.getEnteredMail()}" required>
-          <div class="invalid-feedback">Bitte geben Sie eine E-Mail-Adresse an</div>
-        </div>
+
         <div class="form-group mt-4">
           <label for="registerPw">Passwort</label>
           <input id="registerPw" name="${RegistrationPage.regFormPassword}" type="password"

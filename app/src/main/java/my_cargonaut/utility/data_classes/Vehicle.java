@@ -31,10 +31,10 @@ public class Vehicle implements java.io.Serializable {
     public Measurements getMaxCargoHold() {
         return maxCargoHold;
     }
-    public void setCarInformation(String brand, String model, double curHeight, double curWidth,
+    public void setCarInformation(CarManufacturer brand, String model, double curHeight, double curWidth,
                              double curDepth, double curWeight, double maxHeight, double maxWidth,
                              double maxDepth, double maxWeight){
-        this.brand=CarManufacturer.valueOf(brand);
+        this.brand=brand;
         this.model=model;
         this.currentCargoHold=new Measurements(curHeight,curWidth,curDepth,curWeight);
         this.maxCargoHold=new Measurements(maxHeight,maxWidth,maxDepth,maxWeight);

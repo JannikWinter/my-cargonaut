@@ -50,7 +50,7 @@
                     <div class="col form-group">
                         <div class="row">
                             <div class="col form-group">
-                                <input name="${OfferCreationPage.offerCFormHeight}" type="text" class="form-control" id="${OfferCreationPage.offerCFormHeight}" placeholder="Höhe">
+                                <input name="${OfferCreationPage.offerCFormHeight}" type="text" class="form-control" id="${OfferCreationPage.offerCFormHeight}" placeholder="Hoehe">
                             </div>
                             <div class="col form-group">
                                 <input name="${OfferCreationPage.offerCFormLength}" type="text" class="form-control" id="${OfferCreationPage.offerCFormLength}" placeholder="Breite">
