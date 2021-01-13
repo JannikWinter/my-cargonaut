@@ -1,8 +1,6 @@
-@import my_cargonaut.Page
 @import my_cargonaut.profile.deals.DealsPage;
 @import my_cargonaut.profile.edit.EditPage;
 @import my_cargonaut.profile.cars.CarsPage
-@import my_cargonaut.utility.data_classes.Vehicle
 @import my_cargonaut.utility.data_classes.user.CarManufacturer;
 
 @param my_cargonaut.profile.cars.CarsPage page
@@ -127,7 +125,7 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <label for="${CarsPage.ProfileCModel}">Model</label>
-                                            <input type="text" class="form-control" name="${CarsPage.ProfileCModel}" id="${CarsPage.ProfileCModel}">
+                                            <input value="${page.getVehicle().map(vehicle -> vehicle.getModel()).orElse("ERR")}" type="text" class="form-control" name="${CarsPage.ProfileCModel}" id="${CarsPage.ProfileCModel}">
                                         </div>
                                         <br>
                                         <div class="form-group">
@@ -137,32 +135,32 @@
                                                     <div class="col">
                                                         <div class="form-group">
                                                             <label for="${CarsPage.ProfileCMaxHeight}">Hoehe (cm)</label>
-                                                            <input class="form-control" name="${CarsPage.ProfileCMaxHeight}" id="${CarsPage.ProfileCMaxHeight}">
+                                                            <input value="${"" + page.getVehicle().map(vehicle -> vehicle.getMaxCargoHold().getHeight()).orElse(0.0)}" class="form-control" name="${CarsPage.ProfileCMaxHeight}" id="${CarsPage.ProfileCMaxHeight}">
                                                         </div>
                                                     </div>
                                                     <div class="col">
                                                         <div class="form-group">
                                                             <label for="${CarsPage.ProfileCMaxWidth}">Breite (cm)</label>
-                                                            <input class="form-control" name="${CarsPage.ProfileCMaxWidth}" id="${CarsPage.ProfileCMaxWidth}">
+                                                            <input value="${"" + page.getVehicle().map(vehicle -> vehicle.getMaxCargoHold().getWidth()).orElse(0.0)}" class="form-control" name="${CarsPage.ProfileCMaxWidth}" id="${CarsPage.ProfileCMaxWidth}">
                                                         </div>
                                                     </div>
                                                     <div class="col">
                                                         <div class="form-group">
                                                             <label for="${CarsPage.ProfileCMaxDepth}">Tiefe (cm)</label>
-                                                            <input class="form-control" name="${CarsPage.ProfileCMaxDepth}" id="${CarsPage.ProfileCMaxDepth}">
+                                                            <input value="${"" + page.getVehicle().map(vehicle -> vehicle.getMaxCargoHold().getDepth()).orElse(0.0)}" class="form-control" name="${CarsPage.ProfileCMaxDepth}" id="${CarsPage.ProfileCMaxDepth}">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="${CarsPage.ProfileCMaxWeight}">Gewicht (kg)</label>
-                                                    <input class="form-control" name="${CarsPage.ProfileCMaxWeight}" id="${CarsPage.ProfileCMaxWeight}">
+                                                    <input value="${"" + page.getVehicle().map(vehicle -> vehicle.getMaxCargoHold().getWeight()).orElse(0.0)}" class="form-control" name="${CarsPage.ProfileCMaxWeight}" id="${CarsPage.ProfileCMaxWeight}">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
                                 </div>
-                                <button type="submit" class="btn btn-primary mb-2">Änderungen bestätigen</button>
+                                <button type="submit" class="btn btn-primary mb-2">Aenderungen bestaetigen</button>
                             </div>
                         </div>
                         </form>
