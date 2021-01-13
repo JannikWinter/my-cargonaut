@@ -57,7 +57,7 @@
                                                 <input id="emailInput" name="${FormManUtils.loginFormName}" placeholder="Benutzername" class="form-control form-control-sm" type="text" required="">
                                             </div>
                                             <div class="form-group">
-                                                <input id="passwordInput" name="${FormManUtils.loginFormPassword}" placeholder="Passwort" class="form-control form-control-sm" type="text" required="">
+                                                <input id="passwordInput" name="${FormManUtils.loginFormPassword}" placeholder="Passwort" class="form-control form-control-sm" type="password" required="">
                                             </div>
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-primary btn-block">Login</button>
