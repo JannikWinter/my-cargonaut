@@ -6,6 +6,7 @@ import my_cargonaut.profile.deals.DealsPage;
 import my_cargonaut.utility.FormManUtils;
 import my_cargonaut.utility.SessionManUtils;
 import my_cargonaut.utility.data_classes.Vehicle;
+import my_cargonaut.utility.data_classes.user.CarManufacturer;
 import my_cargonaut.utility.data_classes.user.User;
 import my_cargonaut.utility.data_classes.user.UserRegister;
 
@@ -29,7 +30,7 @@ public class CarsPageController {
         Vehicle inputVehicle = new Vehicle();
 
         inputVehicle.setCarInformation(
-                map.get(CarsPage.ProfileCBrand),
+                CarManufacturer.permissiveValueOf(map.get(CarsPage.ProfileCBrand)),
                 map.get(CarsPage.ProfileCModel),
                 Double.parseDouble(map.get(CarsPage.ProfileCFreeHeight)),
                 Double.parseDouble(map.get(CarsPage.ProfileCFreeWidth)),

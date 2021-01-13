@@ -74,7 +74,7 @@ public enum CarManufacturer {
         };
     }
     //Found on https://stackoverflow.com/questions/7662424/how-do-i-reimplement-valueof-on-enumeration
-    public CarManufacturer permissiveValueOf(String carManufacturer){
+    public static CarManufacturer permissiveValueOf(String carManufacturer){
         for (CarManufacturer enumValue: CarManufacturer.values()){
             return switch (carManufacturer) {
                 case "Alfa-Romeo" -> AlfaRomeo;
@@ -84,7 +84,7 @@ public enum CarManufacturer {
                 case "Mercedes-Benz" -> MercedesBenz;
                 case "Opel/Vauxhall" -> OpelVauxhall;
                 case "Rolls-Royce" -> RollsRoyce;
-                default -> enumValue;
+                default -> CarManufacturer.valueOf(carManufacturer);
             };
 
         }
