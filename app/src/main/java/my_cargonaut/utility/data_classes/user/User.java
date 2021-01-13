@@ -26,7 +26,6 @@ public class User implements java.io.Serializable {
         this.password = new UserPassword(password);
         this.givenName = "Ein neuer";
         this.surname = "Cargonaut";
-        this.dob = LocalDate.now();
         this.city = "Beispielstadt";
         this.cityPostal = "12345";
         this.cellphoneNumber = "+49 111 11111";
@@ -62,12 +61,11 @@ public class User implements java.io.Serializable {
         return cellphoneNumber;
     }
     public void updateProfileInformation(String pronoun, String givenName, String surname,
-                                         LocalDate dob, String city, String cityPostal,
+                                         String city, String cityPostal,
                                          String cellphoneNumber){
         this.pronoun = Pronoun.valueOf(pronoun);
         this.givenName = givenName;
         this.surname = surname;
-        this.dob = dob;
         this.city = city;
         this.cityPostal = cityPostal;
         this.cellphoneNumber = cellphoneNumber;

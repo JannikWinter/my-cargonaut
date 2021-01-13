@@ -52,12 +52,7 @@
                                                                                <label for="${EditPage.ProfileESurname}">Nachname</label>
                                                                                <input type="text" class="form-control" id="${EditPage.ProfileESurname}" name="${EditPage.ProfileESurname}" value="${page.getCurrentUser().map(User::getSurname).orElseThrow(IllegalStateException::new)}">
                                                                            </div>
-                                                                           <!-- Row 3 -->
-                                                                           <div class="form-group">
-                                                                               <label for="${EditPage.ProfileEDOB}">Geburtsdatum</label>
-                                                                               <!-- Watch out there: The user DOB desires a LocDate Typing. Unknown how it maps to type: date -->
-                                                                               <input class="form-control" type="date" id="${EditPage.ProfileEDOB}" name="${EditPage.ProfileEDOB}">
-                                                                           </div>
+
                                                                            <!-- Row 4 -->
                                                                            <div class="row">
                                                                                <div class="col-md-5 form-group">

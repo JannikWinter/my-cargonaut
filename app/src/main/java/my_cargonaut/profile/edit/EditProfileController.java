@@ -32,7 +32,6 @@ public class EditProfileController {
                 map.get(EditPage.ProfileEPronoun),
                 map.get(EditPage.ProfileEName),
                 map.get(EditPage.ProfileESurname),
-                convertDateToLocalDate(parseDateFromFromParam(map.get(EditPage.ProfileEDOB))),
                 map.get(EditPage.ProfileECity),
                 map.get(EditPage.ProfileEPLZ),
                 map.get(EditPage.ProfileECellPhone)
