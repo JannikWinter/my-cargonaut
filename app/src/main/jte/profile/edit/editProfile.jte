@@ -28,7 +28,7 @@
                                                                            <div class="row">
                                                                                <div class="col form-group">
                                                                                    <label for="${EditPage.ProfileEPronoun}">Anrede</label>
-                                                                                   <select class="form-control" name="${EditPage.ProfileEPronoun}" id="${EditPage.ProfileEPronoun}">
+                                                                                   <select class="form-control" name="${EditPage.ProfileEPronoun}" id="${EditPage.ProfileEPronoun}" >
                                                                                        <option selected disabled hidden><${page.getCurrentUser().map(user -> user.getPronoun().toString()).orElse()}</option>
                                                                                        <option>Herr</option>
                                                                                        <option>Frau</option>
