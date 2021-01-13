@@ -19,19 +19,11 @@ public class EditPage extends ProfileEditPage {
     public static final String ProfileECity = "editProfileCity";
     public static final String ProfileECellPhone = "editProfileCellphone";
 
-    private User user;
+
 
     public EditPage(Context ctx){
         super(ctx);
         templateFilePath="/profile/edit/editProfile.jte";
-    }
-
-    public EditPage setUser(User user){
-        this.user = user;
-        return this;
-    }
-    public Optional<User> getUser(){
-        return Optional.ofNullable(user);
     }
 
     public static String getDynamicPath(String username) {
