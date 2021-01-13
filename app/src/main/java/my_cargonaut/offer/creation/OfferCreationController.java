@@ -3,6 +3,7 @@ package my_cargonaut.offer.creation;
 import io.javalin.http.Handler;
 import my_cargonaut.utility.FormManUtils;
 import my_cargonaut.utility.SessionManUtils;
+import my_cargonaut.utility.data_classes.user.User;
 
 import java.text.ParseException;
 import java.util.*;
@@ -20,7 +21,7 @@ public class OfferCreationController {
         OfferCreationPage page;
         OfferCreationService.OfferBuilder offerBuilder;
 
-        Optional<String> currentlyLoggedInUser = SessionManUtils.getUserInSession(ctx);
+        Optional<User> currentlyLoggedInUser = SessionManUtils.getUserInSession(ctx);
         try {
             if(currentlyLoggedInUser.isEmpty()) {
                 // should not happen: Creation of offer while not logged in
@@ -31,7 +32,7 @@ public class OfferCreationController {
             Map<String, String> map = FormManUtils.createFormParamMap(ctx);
             Date date = FormManUtils.parseDateFromFromParam(map.get(OfferCreationPage.offerCFormStartTime));
 
-            offerBuilder = offerCreationService.getOfferBuilder(currentlyLoggedInUser.get())
+            offerBuilder = offerCreationService.getOfferBuilder(currentlyLoggedInUser.get().getUsername())
                     .setStarLocation(map.get(OfferCreationPage.offerCFormStart), "Test", 0.0, 0.0)
                     .setDestinationLocation(map.get(OfferCreationPage.offerCFormDest), "Test", 0.0, 0.0)
                     .setStartTime(date)

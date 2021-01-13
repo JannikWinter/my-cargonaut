@@ -39,7 +39,7 @@
                 <div class="mb-3">
                     <div class="form-group">
                         <label for="${page.offerSearchFormStartT}" class="form-label">Zeitraum von</label>
-                        <input name="${page.offerSearchFormStartT}" type="date" class="form-control" id="${page.offerSearchFormStartT}"
+                        <input name="${page.offerSearchFormStartT}" type="datetime-local" class="form-control" id="${page.offerSearchFormStartT}"
                             placeholder="" value="${page.getEnteredValue(page.offerSearchFormStartT)}">
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                 <div class="mb-3">
                     <div class="form-group">
                         <label for="${page.offerSearchFormEndT}" class="form-label">bis</label>
-                        <input name="${page.offerSearchFormEndT}" type="date" class="form-control" id="${page.offerSearchFormEndT}"
+                        <input name="${page.offerSearchFormEndT}" type="datetime-local" class="form-control" id="${page.offerSearchFormEndT}"
                             placeholder="" value="${page.getEnteredValue(page.offerSearchFormEndT)}">
                     </div>
                 </div>

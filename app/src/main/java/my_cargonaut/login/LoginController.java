@@ -6,6 +6,8 @@ import io.javalin.http.Handler;
 import my_cargonaut.Page;
 import my_cargonaut.landing.LandingPage;
 import my_cargonaut.utility.FormManUtils;
+import my_cargonaut.utility.SessionManUtils;
+import my_cargonaut.utility.data_classes.user.*;
 
 import java.util.Map;
 
@@ -16,7 +18,8 @@ public class LoginController {
     private static final LoginService loginService = LoginService.getInstance();
 
     public static Handler handleLogout = ctx -> {
-        ctx.sessionAttribute(sessionAttributeLoggedInUsername, null);
+        //ctx.sessionAttribute(sessionAttributeLoggedInUsername, null);
+        ctx.sessionAttributeMap().remove(sessionAttributeLoggedInUsername);
         //TODO: Maybe use ctx.path() here? So a user would be redirected to the page they were on
         ctx.redirect(LandingPage.PATH);
     };
@@ -34,8 +37,10 @@ public class LoginController {
                 if (!loginService.authenticate(username, password)) {
                     return page.markAuthentificationFailure("Falsches Passwort");
                 } else {
-                    ctx.sessionAttribute(sessionAttributeLoggedInUsername, username);
-                    return page.markAuthentificationSuccess();
+                    User user = UserRegister.getInstance().getUser(username).get();
+                    //ctx.sessionAttribute(sessionAttributeLoggedInUsername, username);
+                    SessionManUtils.addSessionAttribute(ctx, sessionAttributeLoggedInUsername, username);
+                    return page.markAuthentificationSuccess(user);
                 }
             } catch (IllegalArgumentException e) {
                 return page.markAuthentificationFailure(e.getMessage());

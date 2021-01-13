@@ -17,16 +17,14 @@ import my_cargonaut.offer.creation.OfferCreationController;
 import my_cargonaut.offer.creation.OfferCreationPage;
 import my_cargonaut.offer.search.OffersSearchController;
 import my_cargonaut.offer.search.OffersSearchPage;
+import my_cargonaut.profile.cars.CarsPage;
+import my_cargonaut.profile.cars.CarsPageController;
 import my_cargonaut.registration.RegistrationController;
 import my_cargonaut.registration.RegistrationPage;
 import my_cargonaut.utility.Storage;
-import my_cargonaut.utility.data_classes.user.User;
-import my_cargonaut.utility.data_classes.user.UserRegister;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static io.javalin.apibuilder.ApiBuilder.before;
 import static io.javalin.apibuilder.ApiBuilder.get;
@@ -69,6 +67,9 @@ public class App {
             // Offer creation
             get(OfferCreationPage.PATH, OfferCreationController.serveOfferCreationPage);
             post(OfferCreationPage.PATH, OfferCreationController.handleOfferCreationPost);
+            // Edit vehicle page
+            get(CarsPage.PATH_STATIC, CarsPageController.serveCarsPage);
+            post(CarsPage.PATH_STATIC, CarsPageController.handleCarsPagePost);
 
             app.error(404, LandingController.serveNotFoundPage);
         });

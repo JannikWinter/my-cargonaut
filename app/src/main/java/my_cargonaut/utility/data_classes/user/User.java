@@ -1,5 +1,7 @@
 package my_cargonaut.utility.data_classes.user;
 
+import my_cargonaut.utility.data_classes.Vehicle;
+
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -14,6 +16,7 @@ public class User implements java.io.Serializable {
     private String city;
     private String cityPostal;
     private String cellphoneNumber;
+    private Vehicle vehicle;
 
 
     public User(String name, String password) {
@@ -26,6 +29,7 @@ public class User implements java.io.Serializable {
         this.city = "Beispielstadt";
         this.cityPostal = "12345";
         this.cellphoneNumber = "+49 111 11111";
+        this.vehicle = new Vehicle();
     }
 
     public String getUsername() {
@@ -52,6 +56,7 @@ public class User implements java.io.Serializable {
     public String getCityPostal() {
         return cityPostal;
     }
+    public Vehicle getVehicle() { return vehicle; }
     public String getCellphoneNumber() {
         return cellphoneNumber;
     }
@@ -65,6 +70,9 @@ public class User implements java.io.Serializable {
         this.city = city;
         this.cityPostal = cityPostal;
         this.cellphoneNumber = cellphoneNumber;
+    }
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     @Override
