@@ -12,8 +12,8 @@
                     <div class="col-lg-2 col-md-12">
                         <div class="bg-light">
                             <nav class="nav nav-tabs flex-column">
-                                <a class="nav-link" href="${EditPage.PATH}">Profil</a>
-                                <a class="nav-link" href="${DealsPage.PATH}">Deals</a>
+                                <a class="nav-link" href="${EditPage.getDynamicPath(page.getCurrentUser().get().getUsername())}">Profil</a>
+                                <a class="nav-link" href="#">Deals</a>
                                 <a class="nav-link active" href="#">Fuhrpark</a>
                             </nav>
                         </div>

@@ -3,6 +3,7 @@
 @import my_cargonaut.profile.cars.CarsPage;import my_cargonaut.utility.FormManUtils
 @import my_cargonaut.offer.creation.OfferCreationPage
 @import my_cargonaut.landing.LandingPage
+@import my_cargonaut.profile.edit.EditPage
 @import my_cargonaut.registration.RegistrationPage;import my_cargonaut.utility.data_classes.user.User
 
 @param Page page
@@ -70,7 +71,8 @@
                     @else
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item px-2">
-                            <a href="${CarsPage.getDynamicPath(page.getCurrentUser().map(User::getUsername).orElse(""))}" class="btn btn-info text-white" role="button">
+                            <!--- the get() is intended without check! -->
+                            <a href="${CarsPage.getDynamicPath(page.getCurrentUser().get().getUsername())}" class="btn btn-info text-white" role="button">
                                 <i class="fa fa-user"></i> Mein Profil</a>
                         </li>
                          <li class="nav-item px-2">

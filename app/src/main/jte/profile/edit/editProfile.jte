@@ -1,7 +1,9 @@
-@import my_cargonaut.profile.edit.EditPage
+@import my_cargonaut.profile.cars.CarsPage;import my_cargonaut.profile.edit.EditPage
 @import my_cargonaut.profile.edit.EditProfileController
 @import my_cargonaut.utility.data_classes.user.User;
+
 @param my_cargonaut.profile.edit.EditPage page
+
     @layout.(page = page, content = @`
                <br>
                 <div class="container">
@@ -11,7 +13,7 @@
                                <nav class="nav nav-tabs flex-column">
                                    <a class="nav-link active" href="#">Profil</a>
                                    <a class="nav-link" href="#">Deals</a>
-                                   <a class="nav-link" href="#">Fuhrpark</a>
+                                   <a class="nav-link" href="${CarsPage.getDynamicPath(page.getCurrentUser().get().getUsername())}">Fuhrpark</a>
                                </nav>
                            </div>
                        </div>
@@ -51,7 +53,7 @@
                                                                            <div class="form-group">
                                                                                <label for="${EditPage.ProfileEDOB}">Geburtsdatum</label>
                                                                                <!-- Watch out there: The user DOB desires a LocDate Typing. Unknown how it maps to type: date -->
-                                                                               <input class="form-control" type="date" id="${EditPage.ProfileEDOB}" name="${EditPage.ProfileEDOB}" value="${page.getCurrentUser().map(user -> EditProfileController.parseDateFromFromParam(user.getDob().toString())).orElse()}">
+                                                                               <input class="form-control" type="date" id="${EditPage.ProfileEDOB}" name="${EditPage.ProfileEDOB}" value="${page.getCurrentUser().map(user -> EditProfileController.parseDateFromFromParam(user.getDob().toString())).orElse()} ">
                                                                            </div>
                                                                            <!-- Row 4 -->
                                                                            <div class="row">

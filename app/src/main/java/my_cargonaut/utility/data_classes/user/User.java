@@ -3,6 +3,7 @@ package my_cargonaut.utility.data_classes.user;
 import my_cargonaut.utility.data_classes.Vehicle;
 
 import java.time.LocalDate;
+import java.util.Map;
 import java.util.Objects;
 
 public class User implements java.io.Serializable {
