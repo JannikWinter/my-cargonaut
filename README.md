@@ -31,6 +31,22 @@ The client will only require a connection to the host system and any modern web 
 
 ## Install
 
+MyCargonaut does not need to be installed on any client, since it's a host-rendering based web application. 
+We do however need to set up the host machine:
+
+After meeting all prerequisites, you will need to build the program with `gradle`. For that, move to the `my-cargonaut`
+folder via the terminal and execute the command `gradle build`.
+![Gradle build](./mockups/readme/gradleBuild.png)
+
+When the project has been build, you are able to simply run MyCargonaut on your host machine via the `gradle run` 
+command. ![Gradle run](./mockups/readme/gradle_run.png)
+
+You can then open MyCargonaut from any client machine. On default the address for that would be `http://localhost:7777/`,
+but this can be changed in `./src/main/java/my_cargonaut/App.java` in line `86`, simply by changing the value of 
+`app.start(7777);`.
+
+Note that you will still need to be able to set that address in the first place.
+
 ## Feature Showcase
 
 MyCargonaut is still WIP; it is more a technical demo created by two college students than a real business product.
