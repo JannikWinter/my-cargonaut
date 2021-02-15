@@ -39,7 +39,8 @@ folder via the terminal and execute the command `gradle build`.
 ![Gradle build](./mockups/readme/gradleBuild.png)
 
 When the project has been build, you are able to simply run MyCargonaut on your host machine via the `gradle run` 
-command. ![Gradle run](./mockups/readme/gradle_run.png)
+command. 
+![Gradle run](./mockups/readme/gradle_run.png)
 
 You can then open MyCargonaut from any client machine. On default the address for that would be `http://localhost:7777/`,
 but this can be changed in `./src/main/java/my_cargonaut/App.java` in line `86`, simply by changing the value of 
