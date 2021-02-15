@@ -22,11 +22,11 @@ Regarding code maintenance we are using `JUnit5` as well as `npm 7.5.2` for gene
 
 ## Prerequisites
 
-###Host
+### Host
 For best results, the host machine requires a modern UNIX operating system. You will need `gradle 6.7.1` or compatible 
 version, as well as `openjdk15` or higher.
 
-###Client
+### Client
 The client will only require a connection to the host system and any modern web browser.
 
 ## Install
@@ -38,8 +38,7 @@ After meeting all prerequisites, you will need to build the program with `gradle
 folder via the terminal and execute the command `gradle build`.
 ![Gradle build](./mockups/readme/gradleBuild.png)
 
-When the project has been build, you are able to simply run MyCargonaut on your host machine via the `gradle run` 
-command. 
+When the project has been build, you are able to simply run MyCargonaut on your host machine via the `gradle run` command. 
 ![Gradle run](./mockups/readme/gradle_run.png)
 
 You can then open MyCargonaut from any client machine. On default the address for that would be `http://localhost:7777/`,
