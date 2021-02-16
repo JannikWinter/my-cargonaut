@@ -38,7 +38,7 @@ After meeting all prerequisites, you will need to build the program with `gradle
 folder via the terminal and execute the command `gradle build`.
 ![Gradle build](./mockups/readme/gradleBuild.png)
 
-When the project has been build, you are able to simply run MyCargonaut on your host machine via the `gradle run` command. 
+When the project has been build, you are able to simply run MyCargonaut on your host machine via the command `gradle run`. 
 ![Gradle run](./mockups/readme/gradle_run.png)
 
 You can then open MyCargonaut from any client machine. On default the address for that would be `http://localhost:7777/`,
@@ -79,6 +79,15 @@ Neither linking your Paypal nor uploading a new profile picture works right now.
 
 We managed to add persistency to MyCargonaut. Any accounts created, cars included to the car pools and especially 
 entries added, will remain after shutting down the host server. 
+
+## Proof of concept
+
+We have managed to port a version of MyCargonaut to 
+[Heroku](https://kms-mycargonaut.herokuapp.com/), but do the `JTE` limitations, we were forced to abandon some features,
+like persistency.
+
+The fork can be found [here](https://github.com/LucasF-42/my-cargonaut-v2). This fork is only used as a proof of concept
+and may not work as well as this version.
 
 ## Contributing
 Pull requests are welcome, but we don't plan on continuing the work on this project. The idea & icons of MyCargonaut 
