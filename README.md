@@ -38,7 +38,8 @@ After meeting all prerequisites, you will need to build the program with `gradle
 folder via the terminal and execute the command `gradle build`.
 ![Gradle build](./mockups/readme/gradleBuild.png)
 
-When the project has been build, you are able to simply run MyCargonaut on your host machine via the command `gradle run`. 
+When the project has been build, you are able to simply run MyCargonaut on your host machine via the command `gradle run`.
+
 ![Gradle run](./mockups/readme/gradle_run.png)
 
 You can then open MyCargonaut from any client machine. On default the address for that would be `http://localhost:7777/`,
