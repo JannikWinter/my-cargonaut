@@ -36,6 +36,7 @@ We do however need to set up the host machine:
 
 After meeting all prerequisites, you will need to build the program with `gradle`. For that, move to the `my-cargonaut`
 folder via the terminal and execute the command `gradle build`.
+
 ![Gradle build](./mockups/readme/gradleBuild.png)
 
 When the project has been build, you are able to simply run MyCargonaut on your host machine via the command `gradle run`.
